@@ -1,0 +1,6 @@
+module Pods_Employer_EmployerTests {
+  umbrella header "Pods-Employer-EmployerTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
