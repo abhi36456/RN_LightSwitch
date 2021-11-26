@@ -24,7 +24,7 @@ const MainStackNavigator = () => {
 
       <Stack.Screen
         name="Splash"
-        component={Splash}
+        component={ManagerTabs}
         options={{ headerShown: false }}
       />
       <Stack.Screen

@@ -4,20 +4,21 @@ import { Alert, Image, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo'
 import constants from '../Constants/Colors';
 import JobsList from '../Screens/Manager/container/JobsList';
-import DummyScreen from '../Screens/Manager/container/DummyScreen';
 import ManagerJobsStack from './ManagerJobsStack';
 import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
 } from '../Utility/index';
 import { images } from '../Constants/images';
+import ProfileScreen from '../Screens/Manager/container/ProfileScreen';
+import ManagerJobs from '../Screens/Manager/container/ManageJobs';
 const Tab = createBottomTabNavigator();
 const ManagerTabs = () => {
 
     return (
         <Tab.Navigator
+            initialRouteName={"User Setting"}
             screenOptions={{
-                //activeTintColor: "black",
                 headerShown: false,
                 tabBarStyle: {
                     backgroundColor: '#F3F3F3',
@@ -40,24 +41,22 @@ const ManagerTabs = () => {
                 })}
 
             />
-            {/* <Tab.Screen
-                name="ShoppingScreen"
-                component={DummyScreen}
+            <Tab.Screen
+                name="Logout"
+                component={ManagerJobs}
                 options={({ route }) => ({
                     tabBarLabel: '',
                     tabBarIcon: ({ focused }) => (
-
-                        <Icon
-                            name='heart'
-                            size={24}
-                            color={focused ? constants.title_Colors : '#d9d9d9'}
+                        <Image
+                            source={images.logout}
+                            style={styles.bottom_image}
                         />
                     ),
                 })}
-            /> */}
+            />
             <Tab.Screen
                 name="User Setting"
-                component={DummyScreen}
+                component={ProfileScreen}
                 options={({ route }) => ({
                     tabBarLabel: '',
 

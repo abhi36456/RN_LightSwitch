@@ -81,6 +81,12 @@ const styles = StyleSheet.create({
         width: wp("80%"),
         borderRadius: 15,
         padding: wp("6%")
+    },
+    profile_ic: {
+        width: wp("24%"),
+        height: wp("24%"),
+        alignSelf: "center",
+        marginBottom: wp('5%')
     }
 })
 export default styles

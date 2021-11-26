@@ -67,13 +67,14 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     backIcon: {
-        width: 34,
-        height: 34,
+        width: 24,
+        height: 24,
+        marginLeft: 16,
         alignSelf: 'center'
     },
     rightIcon: {
-        width: 26,
-        height: 26,
+        width: 24,
+        height: 24,
         alignSelf: 'center'
     },
     headerText: {

@@ -12,4 +12,8 @@ export const images = {
     back_grey: require("../Assets/back_grey.png"),
     banner: require("../Assets/banner.png"),
     remove: require("../Assets/remove.png"),
+    upload_camera: require("../Assets/upload_camera.png"),
+    color_eg: require("../Assets/color_eg.png"),
+    next_arrow: require("../Assets/next_arrow.png"),
+    logout: require("../Assets/logout.png"),
 }

@@ -9,65 +9,14 @@ import styles from './style';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "../../../../Utility/index"
 import { images } from '../../../../Constants/images';
 import { ScrollView } from 'react-native';
+import { ProfileComponent } from '../../components/ProfileComponent';
 
 const DiscoverPeople = ({ navigation }) => {
 
     const Card = (value) => {
         return (
-            <ScrollView style={styles.slider_view}>
-                <Image
-                    source={images.user_round}
-                    style={{
-                        width: wp("24%"),
-                        height: wp("24%"),
-                        alignSelf: "center",
-                        marginBottom: wp('5%')
-                    }}
-                />
-                <Text style={styles.bold_title}>Anna Herper</Text>
-                <Text style={styles.bold_regular}>Software Engineer @ Uber </Text>
-                <Text style={styles.blue_regular}>www.linkedin.com/in/aharper</Text>
-                <View style={{ marginVertical: wp("2%") }} />
-                <Text style={styles.bold_title}>Skills</Text>
-                <View style={{ marginVertical: wp("2%") }} />
-                <View style={styles.flex_row}>
-                    <View style={styles.paddder}>
-                        <Text style={styles.black_regular}>React</Text>
-                    </View>
-                    <View style={styles.paddder}>
-                        <Text style={styles.black_regular}>AWS</Text>
-                    </View>
-                </View>
-                <View style={{ marginVertical: wp("2%") }} />
-                <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-                    <View style={styles.paddder}>
-                        <Text style={styles.black_regular}>Python</Text>
-                    </View>
-                    <View style={styles.paddder}>
-                        <Text style={styles.black_regular}>Javascript</Text>
-                    </View>
-                </View>
-                <View style={{ marginVertical: wp("2%") }} />
-                <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-                    <View style={styles.paddder}>
-                        <Text style={styles.black_regular}>Kubernetes</Text>
-                    </View>
-                    <View style={styles.paddder}>
-                        <Text style={styles.black_regular}>Cloud</Text>
-                    </View>
-                </View>
-                <View style={{ marginVertical: wp("2%") }} />
-                <Text style={styles.bold_title}>Looking For</Text>
-                <View style={{ marginVertical: wp("2%") }} />
-                <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-                    <View style={styles.paddder}>
-                        <Text style={styles.black_regular}>Software Engineer</Text>
-                    </View>
-                    <View style={styles.paddder}>
-                        <Text style={styles.black_regular}>Full-Stack Engineer</Text>
-                    </View>
-                </View>
-            </ScrollView>
+           
+          <ProfileComponent />
         )
     }
 
@@ -94,7 +43,7 @@ const DiscoverPeople = ({ navigation }) => {
         <View style={{ flex: 1, backgroundColor: "#FFF" }}>
             <Header backgray={true}
                 navigation={navigation}
-                title={'Discover'} 
+                title={'Discover'}
                 subTitle={'candidates'}
                 rightFirstIcon={'sliders'} ></Header>
             <View style={styles.mainView}>
