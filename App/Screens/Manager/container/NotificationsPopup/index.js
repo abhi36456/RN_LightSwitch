@@ -3,22 +3,14 @@ import {
     Text,
     View,
     Image,
-    Alert,
-    ImageBackground,
-    ScrollView,
     TouchableOpacity,
     StyleSheet
 } from 'react-native';
-import constants from '../../../../Constants/Colors';
 import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
 } from '../../../../Utility/index';
-import Buttons from "../../../../Components/Buttons"
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { TextInput } from 'react-native-paper';
 import Modal from "react-native-modal";
-import { Calendar } from "react-native-calendars"
 import colors from '../../../../Constants/Colors';
 import { images } from '../../../../Constants/images';
 import { actuatedNormalize, Fonts } from '../../../../utils';
@@ -33,7 +25,7 @@ const notificationPopup = ({ navigation, title, sub_title, isVisible, bottomTile
             <View style={styles.modal_view}>
                 <View style={styles.inner_view}>
                     <TouchableOpacity onPress={() => { onpress() }}>
-                        <Image source={images.remove} style={styles.image} />
+                        <Image source={images.close_regular} style={styles.image} />
                     </TouchableOpacity>
                     <Text style={styles.bold_title}>{title}</Text>
                     <Text style={styles.bold_regular}>{sub_title}</Text>
@@ -106,7 +98,7 @@ const styles = StyleSheet.create({
     },
     paddder: {
         width: wp("30%"),
-        padding: hp("1.5%"),
+        padding: hp("1%"),
         borderRadius: 8,
         backgroundColor: colors.violate,
     },
@@ -114,6 +106,6 @@ const styles = StyleSheet.create({
         fontSize: actuatedNormalize("14"),
         color: colors.white_Colors,
         textAlign: "center",
-        fontFamily: Fonts.Regular,
+        fontFamily: Fonts.Bold,
     },
 })

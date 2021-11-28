@@ -25,7 +25,6 @@ export const JobsListComponent = ({ item, onPress, fromDetail, navigation, color
                         <View>
                             <Text style={styles.text}>{item.companyName}</Text>
                             <View style={styles.locationView}>
-                                {/* <EvilIcons name="location" size={18} color={colors.darkText} /> */}
                                 <Image
                                     resizeMode={"contain"}
                                     style={{ ...styles.img_ic, width: wp("3%"), height: wp("4%") }}
@@ -49,14 +48,16 @@ export const JobsListComponent = ({ item, onPress, fromDetail, navigation, color
                     <Image
                         resizeMode={"contain"}
                         style={styles.img_ic}
-                        source={images.remove} />
+                        source={images.close_bold} />
                 </View>
-                <View style={styles.buttonView}>
+                <TouchableOpacity
+                    onPress={() => navigation.navigate("ManagerJobs")}
+                    style={styles.buttonView}>
                     <Image
                         resizeMode={"contain"}
                         style={{ ...styles.img_ic, width: wp("5.2%"), height: wp("5.2%") }}
                         source={images.edit} />
-                </View>
+                </TouchableOpacity>
                 <TouchableOpacity
                     onPress={() => navigation.navigate("DiscoverdPeople")}
                     style={styles.buttonView}>

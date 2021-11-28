@@ -67,7 +67,7 @@ const ManagerJobs = ({ navigation, props }) => {
                             <Image source={images.next_arrow} style={styles.next_ic} />
                         </TouchableOpacity>
                         <View style={styles.borderview} />
-                        <Text style={styles.txt_lbl}>linkedin</Text>
+                        <Text style={styles.txt_lbl}>Link</Text>
                         <View style={styles.borderview} />
                         <TextInput
                             style={{ ...styles.txt_lbl, color: '#0094FF' }}
@@ -129,7 +129,7 @@ const ManagerJobs = ({ navigation, props }) => {
                 renderEdit()
 
                 :
-                <View style={{ alignSelf: "center", flex: 0.9 }}>
+                <View style={{ alignSelf: "center", flex: 0.95 }}>
                     <ScrollView style={{ ...styles.slider_view, alignSelf: "center" }}>
                         <View style={{ marginHorizontal: '6%' }}>
                             <JobsListComponent

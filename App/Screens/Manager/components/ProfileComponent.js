@@ -1,16 +1,14 @@
-import React from 'react'
-import { StyleSheet, Text, View, Image,ScrollView } from 'react-native'
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import React, { useEffect, useRef } from 'react'
+import { StyleSheet, Text, View, Image, ScrollView } from 'react-native'
 import { actuatedNormalize, colors, Fonts, Icons } from '../../../utils';
 import { images } from '../../../Constants/images';
 import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
 } from '../../../Utility/index';
-import { TouchableOpacity } from 'react-native';
-export const ProfileComponent = ({  }) => {
+export const ProfileComponent = ({ }) => {
     return (
-        <>
+        <View style={{ flex: 1 }}>
             <ScrollView style={styles.slider_view}>
                 <Image
                     source={images.user_round}
@@ -59,8 +57,9 @@ export const ProfileComponent = ({  }) => {
                         <Text style={styles.black_regular}>Full-Stack Engineer</Text>
                     </View>
                 </View>
+                <View style={{ marginVertical: wp("5%") }} />
             </ScrollView>
-        </>
+        </View>
     )
 }
 

@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     },
     iconMainView: {
         flexDirection: 'row',
-        width: wp('30%'),
+        width: wp('35%'),
         alignSelf: 'center',
         marginTop: 16,
         justifyContent: 'space-between',

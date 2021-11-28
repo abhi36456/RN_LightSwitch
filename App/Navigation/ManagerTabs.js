@@ -1,29 +1,53 @@
 import React from 'react';
 import { createBottomTabNavigator, BottomTabBar } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
+
 import { Alert, Image, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/Entypo'
-import constants from '../Constants/Colors';
-import JobsList from '../Screens/Manager/container/JobsList';
 import ManagerJobsStack from './ManagerJobsStack';
+import { NavigationContainer, getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
 } from '../Utility/index';
 import { images } from '../Constants/images';
 import ProfileScreen from '../Screens/Manager/container/ProfileScreen';
-import ManagerJobs from '../Screens/Manager/container/ManageJobs';
+import MyFireSide from '../Screens/Manager/container/MyFireside';
 const Tab = createBottomTabNavigator();
-const ManagerTabs = () => {
+const Stack = createStackNavigator();
 
+const ManagerProfileStack = () => {
+    return (
+      <Stack.Navigator>
+        <Stack.Screen
+          name="ProfileScreen"
+          component={ProfileScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="MyFireSide"
+          component={MyFireSide}
+          options={{ headerShown: false }}
+        />
+        
+      </Stack.Navigator>
+    );
+  };
+
+const ManagerTabs = () => {
+    let isTabVisible = true
     return (
         <Tab.Navigator
-            initialRouteName={"User Setting"}
-            screenOptions={{
+            initialRouteName={"User Home"}
+            screenOptions={({ route }) => ({
                 headerShown: false,
                 tabBarStyle: {
                     backgroundColor: '#F3F3F3',
+                    width: wp("70%"),
+                    alignSelf: "center",
+                    display: getTabBarVisibility(route) ? 'flex' : 'none'
                 }
-            }}
+            })
+            }
         >
 
             <Tab.Screen
@@ -31,7 +55,6 @@ const ManagerTabs = () => {
                 component={ManagerJobsStack}
                 options={({ route }) => ({
                     tabBarLabel: '',
-
                     tabBarIcon: ({ focused }) => (
                         <Image
                             source={focused ? images.card_active : images.card_inactive}
@@ -41,25 +64,12 @@ const ManagerTabs = () => {
                 })}
 
             />
-            <Tab.Screen
-                name="Logout"
-                component={ManagerJobs}
-                options={({ route }) => ({
-                    tabBarLabel: '',
-                    tabBarIcon: ({ focused }) => (
-                        <Image
-                            source={images.logout}
-                            style={styles.bottom_image}
-                        />
-                    ),
-                })}
-            />
+
             <Tab.Screen
                 name="User Setting"
-                component={ProfileScreen}
+                component={ManagerProfileStack}
                 options={({ route }) => ({
                     tabBarLabel: '',
-
                     tabBarIcon: ({ focused }) => (
                         <Image
                             source={focused ? images.people_active : images.people_inactive}
@@ -72,6 +82,14 @@ const ManagerTabs = () => {
 
         </Tab.Navigator>
     );
+};
+
+
+const getTabBarVisibility = (route) => {
+    const routeName = getFocusedRouteNameFromRoute(route);
+    const hideOnScreens = ['FiltterScreen'];
+    if (hideOnScreens.indexOf(routeName) > -1) return false;
+    return true;
 };
 
 export default ManagerTabs;

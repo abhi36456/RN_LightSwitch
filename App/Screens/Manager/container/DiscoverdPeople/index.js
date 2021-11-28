@@ -15,8 +15,7 @@ const DiscoverPeople = ({ navigation }) => {
 
     const Card = (value) => {
         return (
-           
-          <ProfileComponent />
+            <ProfileComponent />
         )
     }
 
@@ -55,6 +54,7 @@ const DiscoverPeople = ({ navigation }) => {
                     handleNope={handleNope}
                     handleMaybe={handleMaybe}
                     hasMaybeAction
+                  //  dragY={false}
                 />
             </View>
             <View style={styles.iconMainView}>
@@ -62,7 +62,7 @@ const DiscoverPeople = ({ navigation }) => {
                     <Image
                         resizeMode={"contain"}
                         style={styles.img_ic}
-                        source={images.remove} />
+                        source={images.close_bold} />
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.buttonView}>

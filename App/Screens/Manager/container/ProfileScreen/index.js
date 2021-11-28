@@ -9,7 +9,7 @@ import { ProfileComponent } from '../../components/ProfileComponent';
 import { images } from '../../../../Constants/images';
 import { TextInput } from 'react-native';
 
-const ProfileScreen = () => {
+const ProfileScreen = (props) => {
     const [selected_type, setSelectedType] = useState(1)
     const [Name, setName] = useState('')
     const [currentRole, setCurrentRole] = useState('')
@@ -119,7 +119,7 @@ const ProfileScreen = () => {
             <>
                 <View style={styles.header}>
                     <View style={styles.headerSubContainer}>
-                        <Text style={[styles.headerText, { flex: 1 }]}>{"About"}</Text>
+                        <Text style={[styles.headerText, { flex: 1 }]}>{"Profile"}</Text>
                     </View>
                 </View>
             </>
@@ -143,6 +143,16 @@ const ProfileScreen = () => {
                         }}
                     >View</Text>
                 </TouchableOpacity>
+                <TouchableOpacity style={{ padding: 8 }} 
+                onPress={() => { props.navigation.navigate('MyFireSide') }}>
+                    <Text
+                        style={{
+                            fontFamily: Fonts.Bold,
+                            color: selected_type == 3 ? colors.violate : colors.black_gray,
+                            fontSize: actuatedNormalize(24)
+                        }}
+                    >Pay</Text>
+                </TouchableOpacity>
             </View>
             <View style={{ marginVertical: wp("2%") }} />
 
@@ -150,7 +160,7 @@ const ProfileScreen = () => {
                 renderEdit()
 
                 :
-                <View style={{ alignSelf: "center", flex: 0.9 }}>
+                <View style={{ alignSelf: "center", flex: 0.95 }}>
                     <ProfileComponent />
                 </View>
             }

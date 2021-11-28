@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import { fonts } from 'react-native-elements/dist/config';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { images } from '../../../Constants/images';
@@ -17,7 +17,10 @@ export const Header = (props) => {
                 <Text style={styles.subText}>{props.subTitle}</Text>
             </View>
             {/* <FontAwesome5 name={'plus'} size={26} color={colors.red} style={{ marginRight: 10 }} /> */}
-            <Image source={images.image_add} style={styles.img_animated} />
+
+            <TouchableOpacity onPress={() => props.onPress()} >
+                <Image source={images.image_add} style={styles.img_animated} />
+            </TouchableOpacity>
         </View>
     )
 }

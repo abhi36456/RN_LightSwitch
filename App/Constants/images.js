@@ -16,4 +16,7 @@ export const images = {
     color_eg: require("../Assets/color_eg.png"),
     next_arrow: require("../Assets/next_arrow.png"),
     logout: require("../Assets/logout.png"),
+    close_bold: require("../Assets/close_bold.png"),
+    close_regular: require("../Assets/close_regular.png"),
+    filter_ic: require("../Assets/filter.png"),
 }

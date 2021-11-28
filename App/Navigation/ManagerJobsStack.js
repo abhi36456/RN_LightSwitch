@@ -6,6 +6,7 @@ import JobsList from '../Screens/Manager/container/JobsList';
 import JobDetail from '../Screens/Manager/container/JobDetail';
 import DiscoverdPeople from '../Screens/Manager/container/DiscoverdPeople';
 import MyFilter from '../Screens/Manager/container/MyFilter';
+import ManagerJobs from '../Screens/Manager/container/ManageJobs';
 
 const Stack = createStackNavigator();
 const ManagerJobsStack = () => {
@@ -31,6 +32,12 @@ const ManagerJobsStack = () => {
       <Stack.Screen
         name="FiltterScreen"
         component={MyFilter}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="ManagerJobs"
+        component={ManagerJobs}
         options={{ headerShown: false }}
       />
 
