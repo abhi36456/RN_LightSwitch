@@ -1,20 +1,20 @@
-import React, {useEffect} from 'react';
-import {Text, View, Dimensions, Image} from 'react-native';
+import React, { useEffect } from 'react';
+import { Text, View, Dimensions, Image } from 'react-native';
 import constants from '../../../Constants/Colors';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from '../../../Utility/index';
-const {strings, colors, fonts, urls, PATH} = constants;
+const { strings, colors, fonts, urls, PATH } = constants;
 import * as Utility from "../../../Utility/index"
-const Splash = ({navigation}) => {
+const Splash = ({ navigation }) => {
   useEffect(() => {
     timeoutHandle = setTimeout(() => {
       retrieveData();
     }, 2000);
   }, []);
-  const retrieveData = async() => {
- navigation.navigate('SwiperScreen')
+  const retrieveData = async () => {
+    navigation.navigate('SwiperScreen')
 
   };
   return (
@@ -41,7 +41,7 @@ const Splash = ({navigation}) => {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-       <Text style={{color:constants.white_Colors,fontSize:30,fontWeight:"bold"}}>Logo</Text>
+        <Text style={{ color: constants.white_Colors, fontSize: 30, fontWeight: "bold" }}>Logo</Text>
 
         {/* <Image
           source={require('../../../Assets/splashLogo.png')}

@@ -13,7 +13,8 @@ const colors = {
   dark_purple: '#BB6BD9',
   violate: '#7165FF',
   black_gray: "#656565",
-  black_border: "#CDCDCD"
+  black_border: "#CDCDCD",
+  light_black: 'rgba(0, 0, 0, 0.7);'
 };
 
 export default colors;

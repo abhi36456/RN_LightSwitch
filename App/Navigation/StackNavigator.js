@@ -16,6 +16,7 @@ import SwipeCardDetail from '../Screens/TabScreens/SwipeCardDetail'
 import ShoppingScreen from '../Screens/HeaderScreens/ShoppingScreen'
 import ShoppingScreenDetail from '../Screens/HeaderScreens/ShoppingScreenDetail'
 import ManagerTabs from './ManagerTabs';
+import Password from '../Screens/AuthScreens/Password';
 const Stack = createStackNavigator();
 const MainStackNavigator = () => {
   return (
@@ -24,7 +25,7 @@ const MainStackNavigator = () => {
 
       <Stack.Screen
         name="Splash"
-        component={ManagerTabs}
+        component={Splash}
         options={{ headerShown: false }}
       />
       <Stack.Screen
@@ -41,6 +42,11 @@ const MainStackNavigator = () => {
       <Stack.Screen
         name="SwipeCardDetail"
         component={SwipeCardDetail}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="ChangePassword"
+        component={Password}
         options={{ headerShown: false }}
       />
       <Stack.Screen

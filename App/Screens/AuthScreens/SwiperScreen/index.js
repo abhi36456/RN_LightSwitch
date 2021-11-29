@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import {Text, View, Dimensions, TouchableWithoutFeedBack,StyleSheet,Image, TouchableOpacity} from 'react-native';
+import { Text, View, Dimensions, TouchableWithoutFeedBack, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import constants from '../../../Constants/Colors';
 import {
   widthPercentageToDP as wp,
@@ -8,9 +8,11 @@ import {
 import * as StaticArray from "../../../Constants/StaticArray"
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import Buttons from '../../../Components/Buttons';
-const {strings, colors, fonts, urls, PATH} = constants;
-const SwiperScreen = ({navigation}) => {
+import { actuatedNormalize, Fonts } from '../../../utils';
+const { strings, colors, fonts, urls, PATH } = constants;
+const SwiperScreen = ({ navigation }) => {
   const [activeSlide, setActiveSlide] = useState(0)
+  const [user_type, setUserType] = useState(1)
   const ProductsImageRef = useRef("")
   const _renderItem = ({ item, index }) => {
     return (
@@ -32,15 +34,29 @@ const SwiperScreen = ({navigation}) => {
         data={StaticArray.bannerList}
         renderItem={_renderItem}
         sliderWidth={wp("100%")}
-        itemWidth={wp("70%")}
+        itemWidth={wp("66%")}
+        inactiveSlideScale={0.85}
+        loop
         onSnapToItem={(index) => setActiveSlide(index)}
       />
-      <Text style={styles.titleTxt}>{activeSlide == 0 ? 'Discover' : null} {activeSlide == 1 ? 'Hire' : null}{activeSlide == 2 ? 'Connect' : null} </Text>
-      <Text style={styles.subTitleTxt}>
-        {activeSlide == 0 ? ' Discover professionals in our network with unique skill sets that best match your needs.' : null}
-        {activeSlide == 1 ? ' We match you with people that best fit your openings and have expressed interest in the role. ' : null}
-        {activeSlide == 2 ? 'Not looking for a job? That’s fine, Network with  who have similar interests or broaden your circle. ' : null}
-      </Text>
+      {user_type == 1 ?
+        <Text style={styles.titleTxt}>{activeSlide == 0 ? 'Discover diversity' : null} {activeSlide == 1 ? 'Fill positions fast' : null}{activeSlide == 2 ? 'Take action' : null} </Text>
+        :
+        <Text style={styles.titleTxt}>{activeSlide == 0 ? 'Meet hiring managers' : null} {activeSlide == 1 ? 'Custom recommendations' : null}{activeSlide == 2 ? 'Grow and earn' : null} </Text>
+      }
+      {user_type == 1 ?
+        <Text style={styles.subTitleTxt}>
+          {activeSlide == 0 ? 'Discover a diverse, passionate community of professionals interested in discussing your opportunities' : null}
+          {activeSlide == 1 ? 'No more recruiting ping pong. Connect directly with rising talent who have already expressed interest in your positions.' : null}
+          {activeSlide == 2 ? 'Hire 5x faster with an exclusive platform designed to connect you to high-quality candidates in minutes. No more waiting.' : null}
+        </Text>
+        :
+        <Text style={styles.subTitleTxt}>
+          {activeSlide == 0 ? 'Connect directly with leading professionals hiring for leading opportunities. Executives want to chat with you, so no more waiting to hear back.' : null}
+          {activeSlide == 1 ? 'Explore an exclusive network of professionals and job opportunities custom filtered for your profile and preferences, not another laundry list.' : null}
+          {activeSlide == 2 ? 'Refer your friends to managers to hiring managers / opportunities and grow your network through LightSwitch. Successful referrals earn you rewards.' : null}
+        </Text>
+      }
       <Pagination
         dotsLength={StaticArray.bannerList.length}
         activeDotIndex={activeSlide}
@@ -51,14 +67,23 @@ const SwiperScreen = ({navigation}) => {
         inactiveDotScale={0.6}
       />
 
-      <Buttons title={'Create an account'} click={() => navigation.navigate('Login')}></Buttons>
+      <Buttons
+        btnColor={constants.dark_purple}
+        title={'Create an account'}
+        click={() => navigation.navigate('Login')}></Buttons>
 
       <TouchableOpacity style={styles.alreadyAccountView}
-      onPress={()=>navigation.navigate('ManagerTabs')}>
+        onPress={() => navigation.navigate('ManagerTabs')}>
         <Text style={styles.alreadyTxt}>Already have an account? </Text>
-        <Text style={styles.signInTxt}>SignIn</Text>
-
+        <Text style={styles.signInTxt}>Sign In</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity style={styles.alreadyAccountView}
+        onPress={() => user_type == 1 ? setUserType(2) : setUserType(1)}
+      >
+        <Text style={styles.signInTxt}>{user_type == 1 ? 'I’m a PROFESSIONAL' : 'I’m a HIRING MANAGER'}</Text>
+      </TouchableOpacity>
+
     </View>
   );
 };
@@ -69,20 +94,51 @@ const styles = StyleSheet.create({
 
 
 
-  swiperImg: { height: hp("35%"), width: wp("60%"), alignSelf: 'center', borderRadius: 20 },
-  swiperContiner: { alignSelf: "center", marginTop: hp('10%') },
-  titleTxt: { marginTop: hp('5%'), fontSize: 20, color: constants.title_Colors, textAlign: 'center', fontWeight: '800' },
-  subTitleTxt: { marginTop: hp('5%'), fontSize: 15, color: constants.grey_Text, textAlign: 'center', alignSelf: 'center', width: wp('90%') },
+  swiperImg: { height: hp("40%"), width: wp("60%"), alignSelf: 'center', borderRadius: 20 },
+  swiperContiner: {
+    alignSelf: "center",
+    marginTop: hp('10%')
+  },
+  titleTxt: {
+    marginTop: hp('5%'),
+    fontSize: actuatedNormalize(24),
+    color: constants.dark_purple,
+    textAlign: 'center',
+    fontFamily: Fonts.Bold
+  },
+  subTitleTxt: {
+    marginTop: hp('2%'),
+    fontSize: actuatedNormalize(15),
+    color: constants.grey_Text,
+    textAlign: 'center',
+    alignSelf: 'center',
+    width: wp('80%'),
+    fontFamily: Fonts.Regular
+  },
   dotView: {
     width: 10,
     height: 10,
     borderRadius: 5,
-    marginHorizontal: 8,
-    backgroundColor: constants.title_Colors
+    backgroundColor: constants.dark_purple
   },
 
-  alreadyAccountView: { flexDirection: 'row', alignSelf: 'center', alignItems: 'center', marginTop: hp('5%') },
-  alreadyTxt: { fontSize: 17, color: constants.grey_Text, textAlign: 'center', },
-  signInTxt: { fontSize: 17, color: constants.title_Colors, textAlign: 'center', }
+  alreadyAccountView: {
+    flexDirection: 'row',
+    alignSelf: 'center',
+    alignItems: 'center',
+    marginTop: hp('3%')
+  },
+  alreadyTxt: {
+    fontSize: actuatedNormalize(16),
+    color: constants.grey_Text,
+    textAlign: 'center',
+    fontFamily: Fonts.Regular
+  },
+  signInTxt: {
+    fontSize: actuatedNormalize(16),
+    color: constants.dark_purple,
+    textAlign: 'center',
+    fontFamily: Fonts.Bold
+  }
 
 })

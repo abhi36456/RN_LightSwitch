@@ -1,6 +1,8 @@
-import React, { useState ,useRef} from 'react';
-import { Text, View, ImageBackground, Alert, TextInput } from 'react-native';
+import React, { useState, useRef } from 'react';
+import { Text, View, ImageBackground, Image, TextInput, TouchableOpacity } from 'react-native';
+import { Header } from '../../../Components/commonHeader';
 import constants from '../../../Constants/Colors';
+import { images } from '../../../Constants/images';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -19,20 +21,33 @@ const OtpVerfiy = ({ navigation, title }) => {
   const input_3 = useRef("");
   const input_4 = useRef("");
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, backgroundColor: constants.white_Colors }}>
 
-      <Text style={styles.titleTxt}>00:50</Text>
+      <View style={styles.header}>
+        <View style={styles.headerSubContainer}>
+
+          <TouchableOpacity
+          onPress={() => navigation.goBack()}
+            style={styles.backWrapper}>
+            <Image
+              resizeMode={'contain'}
+              source={images.back_pink}
+              style={styles.backIcon}
+            />
+          </TouchableOpacity>
+        </View>
+      </View>
+      <Text style={styles.titleTxt}>01:42</Text>
       <Text style={styles.subTitleTxt}>
-
         Type the verification code
         we’ve sent you
       </Text>
 
       <View style={styles.textInputMainView}>
         <View style={{
-          borderColor: constants.title_Colors,
+          borderColor: constants.dark_purple,
           borderWidth: 1,
-          height: hp('10%'), width: wp('20%'), backgroundColor: otp1 == '' ? null : constants.title_Colors, borderRadius: 10, marginLeft: wp('3%'), justifyContent: 'center', alignItems: 'center'
+          height: hp('8.5%'), width: wp('17%'), backgroundColor: otp1 == '' ? null : constants.dark_purple, borderRadius: 12, marginLeft: wp('3%'), justifyContent: 'center', alignItems: 'center'
         }}>
           <TextInput
             style={styles.textInputView}
@@ -46,10 +61,10 @@ const OtpVerfiy = ({ navigation, title }) => {
         </View>
 
         <View style={{
-          height: hp('10%'),
-          borderColor: constants.title_Colors,
+          height: hp('8.5%'),
+          borderColor: constants.dark_purple,
           borderWidth: 1,
-          width: wp('20%'), backgroundColor: otp2 == '' ? null : constants.title_Colors, borderRadius: 10, marginLeft: wp('3%'), justifyContent: 'center', alignItems: 'center'
+          width: wp('17%'), backgroundColor: otp2 == '' ? null : constants.dark_purple, borderRadius: 12, marginLeft: wp('3%'), justifyContent: 'center', alignItems: 'center'
         }}>
           <TextInput
             style={styles.textInputView}
@@ -64,9 +79,9 @@ const OtpVerfiy = ({ navigation, title }) => {
         </View>
 
         <View style={{
-          borderColor: constants.title_Colors,
+          borderColor: constants.dark_purple,
           borderWidth: 1,
-          height: hp('10%'), width: wp('20%'), backgroundColor: otp3 == '' ? null : constants.title_Colors, borderRadius: 10, marginLeft: wp('3%'), justifyContent: 'center', alignItems: 'center'
+          height: hp('8.5%'), width: wp('17%'), backgroundColor: otp3 == '' ? null : constants.dark_purple, borderRadius: 12, marginLeft: wp('3%'), justifyContent: 'center', alignItems: 'center'
         }}>
           <TextInput
             style={styles.textInputView}
@@ -82,9 +97,9 @@ const OtpVerfiy = ({ navigation, title }) => {
 
 
         <View style={{
-          borderColor: constants.title_Colors,
+          borderColor: constants.dark_purple,
           borderWidth: 1,
-          height: hp('10%'), width: wp('20%'), backgroundColor: otp4 == '' ? null : constants.title_Colors, borderRadius: 10, marginLeft: wp('3%'), justifyContent: 'center', alignItems: 'center'
+          height: hp('8.5%'), width: wp('17%'), backgroundColor: otp4 == '' ? null : constants.dark_purple, borderRadius: 12, marginLeft: wp('3%'), justifyContent: 'center', alignItems: 'center'
         }}>
           <TextInput
             style={styles.textInputView}
@@ -94,10 +109,12 @@ const OtpVerfiy = ({ navigation, title }) => {
               // this.setState({ otp4 })
               setotp4(otp4)
               if (otp4) input_4.current.focus();
-              navigation.navigate('ProfileDetail')
+              navigation.navigate('ChangePassword')
+              
             }}
           ></TextInput>
         </View>
+        
 
       </View>
       <Text style={styles.titleTxt2}>Send again</Text>

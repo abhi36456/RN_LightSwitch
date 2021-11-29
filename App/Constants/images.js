@@ -19,4 +19,5 @@ export const images = {
     close_bold: require("../Assets/close_bold.png"),
     close_regular: require("../Assets/close_regular.png"),
     filter_ic: require("../Assets/filter.png"),
+    back_pink: require("../Assets/back_pink.png"),
 }
