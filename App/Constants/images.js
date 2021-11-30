@@ -20,4 +20,7 @@ export const images = {
     close_regular: require("../Assets/close_regular.png"),
     filter_ic: require("../Assets/filter.png"),
     back_pink: require("../Assets/back_pink.png"),
+    photo: require("../Assets/photo.png"),
+    camera: require("../Assets/camera.png"),
+    chat: require("../Assets/chat.png"),
 }

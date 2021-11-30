@@ -4,18 +4,43 @@ import {
     StyleSheet
 } from 'react-native';
 import constants from '../../../Constants/Colors';
+import { getBottomSpace, getStatusBarHeight, ifIphoneX } from 'react-native-iphone-x-helper';
+import { actuatedNormalize, Fonts } from '../../../utils';
 import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
 } from '../../../Utility/index';
 const styles = StyleSheet.create({
     mainView: { flex: 1, backgroundColor: 'white' },
-    titleTxt: { fontSize: 27, color: 'black', marginTop: hp('13%'), width: wp('80%'), alignSelf: 'center', fontWeight: '600' },
+    titleTxt: {
+        fontSize: wp(8),
+        color: 'black',
+        marginTop: hp('3%'),
+        width: wp('80%'),
+        alignSelf: 'center',
+        fontWeight: '600'
+    },
     subTitleTxt: { fontSize: 15, color: 'black', marginTop: hp('1%'), width: wp('80%'), alignSelf: 'center', },
     inputImg: { height: hp("15%"), width: wp("80%"), alignSelf: 'center', marginTop: hp('5%') },
-    avtarViewImg: { height: hp('10%'), width: hp('20%'), alignSelf: 'center', borderRadius: 10, marginTop: hp('5%') },
-    avtarCameraIcon: { alignSelf: 'center', bottom: hp('3%'), backgroundColor: constants.white_Colors, borderRadius: 10, left: hp('3%') },
-    inputView: { width: wp('80%'), alignSelf: 'center', color: 'red', marginTop: hp('3%') },
+    avtarViewImg: {
+        height: hp('15%'),
+        width: hp('15%'),
+        alignSelf: 'center',
+        borderRadius: 10,
+        marginTop: hp('5%')
+    },
+    avtarCameraIcon: {
+        alignSelf: 'center',
+        bottom: hp('3%'),
+        height: hp('5%'),
+        width: hp('5%'),
+        left: hp('5.5%')
+    },
+    inputView: {
+        backgroundColor: "#FFF",
+        width: wp('80%'),
+        alignSelf: 'center', color: 'red', marginTop: hp('3%')
+    },
     birthdayField: { width: wp('80%'), marginTop: hp('3%'), alignSelf: 'center', height: hp('7%'), borderRadius: 10, backgroundColor: '#e6e6ff', alignItems: 'center', justifyContent: 'center', flexDirection: 'row' },
     birthdayTxt: { marginLeft: wp('3%'), width: wp('60%'), color: constants.title_Colors, fontWeight: '800' },
     calendarMainView: { height: hp('60%'), backgroundColor: 'white', width: wp('100%'), alignSelf: 'center', bottom: 0, position: 'absolute', borderTopEndRadius: 50, borderTopStartRadius: 50 },
@@ -41,6 +66,36 @@ const styles = StyleSheet.create({
         textDayFontSize: 16,
         textMonthFontSize: 16,
         textDayHeaderFontSize: 16
-    }
+    },
+    header: {
+        backgroundColor: constants.white_Colors,
+        ...ifIphoneX(
+            {
+                paddingTop: getStatusBarHeight() + 20
+            },
+            {
+                paddingTop: Platform.OS == "ios" ? getStatusBarHeight() + 15 : 20 // for android 
+            }
+        )
+    },
+    headerSubContainer: {
+        flexDirection: 'row',
+        width: wp("95%"),
+        alignSelf: 'center',
+    },
+    backWrapper: {
+        justifyContent: 'center',
+        borderRadius: 12,
+        borderColor: constants.grey_Background,
+        borderWidth: 1,
+        marginLeft: 16,
+        padding: 16,
+    },
+    backIcon: {
+        width: 15,
+        height: 15,
+        tintColor: constants.dark_purple,
+        alignSelf: 'center'
+    },
 });
 export default styles
