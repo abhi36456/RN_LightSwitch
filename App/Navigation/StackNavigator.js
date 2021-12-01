@@ -1,5 +1,5 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import Splash from '../Screens/AuthScreens/Splash';
 import Login from '../Screens/AuthScreens/Login/Index';
 import SignUp from '../Screens/AuthScreens/SignUp';
@@ -17,6 +17,7 @@ import ShoppingScreen from '../Screens/HeaderScreens/ShoppingScreen'
 import ShoppingScreenDetail from '../Screens/HeaderScreens/ShoppingScreenDetail'
 import ManagerTabs from './ManagerTabs';
 import Password from '../Screens/AuthScreens/Password';
+import ProfileDetailMore from '../Screens/AuthScreens/ProfileDetailMore';
 const Stack = createStackNavigator();
 const MainStackNavigator = () => {
   return (
@@ -38,7 +39,11 @@ const MainStackNavigator = () => {
         component={ShoppingScreen}
         options={{ headerShown: false }}
       />
-
+      <Stack.Screen
+        name="ProfileDetailMore"
+        component={ProfileDetailMore}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen
         name="SwipeCardDetail"
         component={SwipeCardDetail}
@@ -91,13 +96,13 @@ const MainStackNavigator = () => {
       <Stack.Screen
         name="SignUp"
         component={SignUp}
-        options={{headerShown: false}}
+        options={{ headerShown: false }}
       />
 
-       <Stack.Screen
+      <Stack.Screen
         name="OtpVerfiy"
         component={OtpVerfiy}
-        options={{headerShown: false}}
+        options={{ headerShown: false }}
       />
 
       <Stack.Screen
@@ -106,9 +111,9 @@ const MainStackNavigator = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-      name="ManagerTabs"
-      component={ManagerTabs}
-      options={{ headerShown: false}}
+        name="ManagerTabs"
+        component={ManagerTabs}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );

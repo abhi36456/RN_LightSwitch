@@ -36,7 +36,7 @@ const EnableNotification = ({ navigation }) => {
             <Text style={styles.subTitleTxt}>
                 Get push-notification when hiring managers and connections message you. Highly suggested for full experience.
             </Text>
-            <Buttons title={'I want to be notified'} btnColor={constants.dark_purple} buttonTop={hp('20%')} click={() => navigation.navigate('BottomTab')}></Buttons>
+            <Buttons title={'I want to be notified'} btnColor={constants.dark_purple} buttonTop={hp('20%')} click={() => navigation.navigate('ManagerTabs')}></Buttons>
         </View>
     );
 };

@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
         fontWeight: '600'
     },
     subTitleTxt: { fontSize: 15, color: 'black', marginTop: hp('1%'), width: wp('80%'), alignSelf: 'center', },
-    inputImg: { height: hp("15%"), width: wp("80%"), alignSelf: 'center', marginTop: hp('5%') },
     avtarViewImg: {
         height: wp('32%'),
         width: wp('32%'),
@@ -36,37 +35,44 @@ const styles = StyleSheet.create({
         width: hp('6%'),
         left: wp('14%')
     },
-    inputView: {
-        backgroundColor: "#FFF",
+    inputText: {
+        padding: 16,
+        borderColor: constants.black_border,
+        borderRadius: 7,
+        borderWidth: 1,
+        fontFamily: Fonts.Regular
+    },
+    viewWrapper: {
+        alignSelf: "center",
         width: wp('80%'),
-        alignSelf: 'center', 
         marginTop: hp('2%')
     },
-    birthdayField: { width: wp('80%'), marginTop: hp('3%'), alignSelf: 'center', height: hp('7%'), borderRadius: 10, backgroundColor: '#e6e6ff', alignItems: 'center', justifyContent: 'center', flexDirection: 'row' },
-    birthdayTxt: { marginLeft: wp('3%'), width: wp('60%'), color: constants.title_Colors, fontWeight: '800' },
-    calendarMainView: { height: hp('60%'), backgroundColor: 'white', width: wp('100%'), alignSelf: 'center', bottom: 0, position: 'absolute', borderTopEndRadius: 50, borderTopStartRadius: 50 },
-    calendarTheme: {
-        backgroundColor: '#ffffff',
-        calendarBackground: '#ffffff',
-        textSectionTitleColor: '#b6c1cd',
-        textSectionTitleDisabledColor: '#d9e1e8',
-        selectedDayBackgroundColor: 'red',
-        selectedDayTextColor: '#ffffff',
-        todayTextColor: constants.title_Colors,
-        dayTextColor: '#2d4150',
-        textDisabledColor: '#d9e1e8',
-        dotColor: '#00adf5',
-        selectedDotColor: '#ffffff',
-        arrowColor: constants.grey_Text,
-        disabledArrowColor: '#d9e1e8',
-        monthTextColor: constants.title_Colors,
-        indicatorColor: 'blue',
-        textDayFontWeight: '300',
-        textMonthFontWeight: 'bold',
-        textDayHeaderFontWeight: '300',
-        textDayFontSize: 16,
-        textMonthFontSize: 16,
-        textDayHeaderFontSize: 16
+    img_add: {
+        width: wp("4.5%"),
+        height: wp("4.5%"),
+        alignSelf: "center"
+    },
+    inner_row: {
+        width: wp("70%"),
+        alignSelf: "center",
+        flexDirection: "row", justifyContent: "space-between"
+    },
+    paddder: {
+        width: wp("30%"),
+        padding: hp("1.5%"),
+        borderRadius: 8,
+        backgroundColor: constants.violate,
+    },
+    close_ic: {
+        width: 16, height: 16,
+        marginTop: -16,
+        marginRight: -16,
+        alignSelf: "flex-end"
+    },
+    black_regular: {
+        fontSize: actuatedNormalize("12"),
+        color: constants.white_Colors,
+        fontFamily: Fonts.Regular,
     },
     header: {
         backgroundColor: constants.white_Colors,
@@ -97,6 +103,30 @@ const styles = StyleSheet.create({
         height: 15,
         tintColor: constants.dark_purple,
         alignSelf: 'center'
+    },
+    input_row: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        paddingBottom: 16,
+        marginTop:hp(4)
+    },
+    txt_lbl: {
+        color: constants.violate,
+        fontSize: wp(5),
+        fontFamily: Fonts.Bold,
+        paddingLeft: 0
+    },
+    next_ic: {
+        alignSelf: "center",
+        width: wp("3%"),
+        height: wp("3%")
+    },
+    txt_lbl_common: {
+        color: constants.black_gray,
+        fontSize: actuatedNormalize(16),
+        fontFamily: Fonts.Bold,
+        padding: actuatedNormalize(6),
+        paddingLeft: 0
     },
 });
 export default styles

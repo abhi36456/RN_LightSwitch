@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ScrollView, Text, View, Image } from 'react-native'
+import { ScrollView, Text, View, Image, KeyboardAvoidingView } from 'react-native'
 import colors from '../../../../Constants/Colors';
 import styles from './style';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from '../../../../Utility/index';
@@ -17,97 +17,100 @@ const ProfileScreen = (props) => {
 
     const renderEdit = () => {
         return (
-            <ScrollView style={{ flex: 1, alignSelf: "center" }}>
-                <>
-                    <View style={{ marginVertical: wp("1%") }} />
-                    <View style={{ alignSelf: "center" }}>
-                        <Image
-                            source={images.user_round}
-                            style={styles.profile_ic}
-                        />
-                        <Image
-                            source={images.upload_camera}
-                            style={styles.camera_ic}
-                        />
-                    </View>
-                    <View style={{ marginVertical: wp("2%") }} />
-                    <View style={{ width: wp("100%"), alignSelf: "center" }}>
-                        <Text style={styles.txt_lbl}>Name</Text>
-                        <View style={styles.borderview} />
-                        <TextInput
-                            style={styles.txtInput}
-                            value={Name}
-                            onChangeText={(val) => { setName(val) }}
-                            placeholder={"Name"}
-                        />
-                        <View style={styles.borderview} />
-                        <Text style={styles.txt_lbl}>Current Role</Text>
-                        <View style={styles.borderview} />
-                        <TextInput
-                            style={styles.txtInput}
-                            value={currentRole}
-                            onChangeText={(val) => { setCurrentRole(val) }}
-                            placeholder={"Current Role"}
-                        />
-                        <View style={styles.borderview} />
-                        <Text style={styles.txt_lbl}>Current Company</Text>
-                        <View style={styles.borderview} />
-                        <TextInput
-                            style={styles.txtInput}
-                            value={currentCompany}
-                            onChangeText={(val) => { setCurrentCompany(val) }}
-                            placeholder={"Current Company"}
-                        />
-                        <View style={styles.borderview} />
-
-
-                        <View style={styles.input_row}>
-                            <Text style={styles.txt_lbl}>Skills</Text>
-                            <Image source={images.image_add} style={styles.img_add} />
-                        </View>
-
-                        <View style={styles.inner_row}>
-                            <View style={styles.paddder}>
-                                <Image source={images.remove} style={styles.close_ic}></Image>
-                                <Text style={styles.black_regular}>Aws</Text>
-                            </View>
-                            <View style={styles.paddder}>
-                                <Image source={images.remove} style={styles.close_ic}></Image>
-                                <Text style={styles.black_regular}>Python</Text>
-                            </View>
+            <>
+                <ScrollView style={{ flex: 1, alignSelf: "center" }}>
+                    <>
+                        <View style={{ marginVertical: wp("1%") }} />
+                        <View style={{ alignSelf: "center" }}>
+                            <Image
+                                source={images.user_round}
+                                style={styles.profile_ic}
+                            />
+                            <Image
+                                source={images.upload_camera}
+                                style={styles.camera_ic}
+                            />
                         </View>
                         <View style={{ marginVertical: wp("2%") }} />
-                        <View style={styles.inner_row}>
-                            <View style={styles.paddder}>
-                                <Image source={images.remove} style={styles.close_ic}></Image>
-                                <Text style={styles.black_regular}>Javascript</Text>
+                        <View style={{ width: wp("100%"), alignSelf: "center" }}>
+                            <Text style={styles.txt_lbl}>Name</Text>
+                            <View style={styles.borderview} />
+                            <TextInput
+                                style={styles.txtInput}
+                                value={Name}
+                                onChangeText={(val) => { setName(val) }}
+                                placeholder={"Name"}
+                            />
+                            <View style={styles.borderview} />
+                            <Text style={styles.txt_lbl}>Current Role</Text>
+                            <View style={styles.borderview} />
+                            <TextInput
+                                style={styles.txtInput}
+                                value={currentRole}
+                                onChangeText={(val) => { setCurrentRole(val) }}
+                                placeholder={"Current Role"}
+                            />
+                            <View style={styles.borderview} />
+                            <Text style={styles.txt_lbl}>Current Company</Text>
+                            <View style={styles.borderview} />
+                            <TextInput
+                                style={styles.txtInput}
+                                value={currentCompany}
+                                onChangeText={(val) => { setCurrentCompany(val) }}
+                                placeholder={"Current Company"}
+                            />
+                            <View style={styles.borderview} />
+
+
+                            <View style={styles.input_row}>
+                                <Text style={styles.txt_lbl}>Skills</Text>
+                                <Image source={images.image_add} style={styles.img_add} />
                             </View>
-                            <View style={styles.paddder}>
-                                <Image source={images.remove} style={styles.close_ic}></Image>
-                                <Text style={styles.black_regular}>Cloud</Text>
+
+                            <View style={styles.inner_row}>
+                                <View style={styles.paddder}>
+                                    <Image source={images.remove} style={styles.close_ic}></Image>
+                                    <Text style={styles.black_regular}>Aws</Text>
+                                </View>
+                                <View style={styles.paddder}>
+                                    <Image source={images.remove} style={styles.close_ic}></Image>
+                                    <Text style={styles.black_regular}>Python</Text>
+                                </View>
                             </View>
-                        </View>
-                        <View style={{ marginVertical: wp("2%") }} />
-                        <View style={styles.input_row}>
-                            <Text style={styles.txt_lbl}>Looking For</Text>
-                            <Image source={images.image_add} style={styles.img_add} />
+                            <View style={{ marginVertical: wp("2%") }} />
+                            <View style={styles.inner_row}>
+                                <View style={styles.paddder}>
+                                    <Image source={images.remove} style={styles.close_ic}></Image>
+                                    <Text style={styles.black_regular}>Javascript</Text>
+                                </View>
+                                <View style={styles.paddder}>
+                                    <Image source={images.remove} style={styles.close_ic}></Image>
+                                    <Text style={styles.black_regular}>Cloud</Text>
+                                </View>
+                            </View>
+                            <View style={{ marginVertical: wp("2%") }} />
+                            <View style={styles.input_row}>
+                                <Text style={styles.txt_lbl}>Looking For</Text>
+                                <Image source={images.image_add} style={styles.img_add} />
+                            </View>
+
+                            <View style={styles.inner_row}>
+                                <View style={styles.paddder}>
+                                    <Image source={images.remove} style={styles.close_ic}></Image>
+                                    <Text style={styles.black_regular}>Aws</Text>
+                                </View>
+                                <View style={styles.paddder}>
+                                    <Image source={images.remove} style={styles.close_ic}></Image>
+                                    <Text style={styles.black_regular}>Python</Text>
+                                </View>
+                            </View>
+                            <View style={{ marginVertical: wp("8%") }} />
                         </View>
 
-                        <View style={styles.inner_row}>
-                            <View style={styles.paddder}>
-                                <Image source={images.remove} style={styles.close_ic}></Image>
-                                <Text style={styles.black_regular}>Aws</Text>
-                            </View>
-                            <View style={styles.paddder}>
-                                <Image source={images.remove} style={styles.close_ic}></Image>
-                                <Text style={styles.black_regular}>Python</Text>
-                            </View>
-                        </View>
-                        <View style={{ marginVertical: wp("8%") }} />
-                    </View>
-
-                </>
-            </ScrollView>
+                    </>
+                </ScrollView>
+                {Platform.OS == 'ios' && <KeyboardAvoidingView behavior={'padding'} />}
+            </>
         )
     }
 
@@ -143,8 +146,8 @@ const ProfileScreen = (props) => {
                         }}
                     >View</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={{ padding: 8 }} 
-                onPress={() => { props.navigation.navigate('MyFireSide') }}>
+                <TouchableOpacity style={{ padding: 8 }}
+                    onPress={() => { props.navigation.navigate('MyFireSide') }}>
                     <Text
                         style={{
                             fontFamily: Fonts.Bold,

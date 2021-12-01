@@ -11,7 +11,7 @@ const Splash = ({ navigation }) => {
   useEffect(() => {
     timeoutHandle = setTimeout(() => {
       retrieveData();
-    }, 2000);
+    }, 500);
   }, []);
   const retrieveData = async () => {
     navigation.navigate('SwiperScreen')
@@ -23,7 +23,7 @@ const Splash = ({ navigation }) => {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: constants.title_Colors,
+        backgroundColor: constants.white_Colors,
       }}>
       <View
         style={{

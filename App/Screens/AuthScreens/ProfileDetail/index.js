@@ -7,7 +7,8 @@ import {
     ImageBackground,
     ScrollView,
     TouchableOpacity,
-    StyleSheet
+    StyleSheet,
+    KeyboardAvoidingView
 } from 'react-native';
 import constants from '../../../Constants/Colors';
 import styles from "./style"
@@ -49,48 +50,60 @@ const ProfileDetail = ({ navigation, title }) => {
                 </View>
             </View>
 
-            <Text style={styles.titleTxt}>Tell us about you</Text>
-            <Image source={images.photo}
-                style={styles.avtarViewImg}></Image>
+            <ScrollView
+                bounces={false}
+                showsVerticalScrollIndicator={false}
+                keyboardDismissMode={'interactive'}
+                keyboardShouldPersistTaps={'handled'}>
 
-            <Image source={images.camera} style={styles.avtarCameraIcon} />
-            {/* <Icon name={'camera'} size={20} color={constants.title_Colors} style={styles.avtarCameraIcon}></Icon> */}
-            <TextInput
-                label="First Name"
-                style={styles.inputView}
-                mode={'outlined'}
-                outlineColor={'#E8E6EA'}
-                theme={{ colors: { primary: '#000' } }}
-                underlineColor={'#E8E6EA'}
-                value={firstname}
-                onChangeText={(val) => { setFirstname(val) }}
-            />
+                <Text style={styles.titleTxt}>Tell us about you</Text>
+                <Image source={images.photo}
+                    style={styles.avtarViewImg}></Image>
 
+                <Image source={images.camera} style={styles.avtarCameraIcon} />
+                {/* <Icon name={'camera'} size={20} color={constants.title_Colors} style={styles.avtarCameraIcon}></Icon> */}
+                <TextInput
+                    label="First Name"
+                    style={styles.inputView}
+                    mode={'outlined'}
+                    outlineColor={'rgba(0, 0, 0, 0.4)'}
+                
+                    theme={{ colors: { primary: 'rgba(0, 0, 0, 0.4)' } }}
+                    underlineColor={'rgba(0, 0, 0, 0.4)'}
+                    value={firstname}
+                    onChangeText={(val) => { setFirstname(val) }}
+                />
 
-            <TextInput
-                label="Last Name"
-                style={styles.inputView}
-                mode={'outlined'}
-                outlineColor={'#E8E6EA'}
-                theme={{ colors: { primary: '#000', } }}
-                underlineColor={'#E8E6EA'}
-            />
+                <TextInput
+                    label="Last Name"
+                    style={styles.inputView}
+                    mode={'outlined'}
+                    outlineColor={'rgba(0, 0, 0, 0.4)'}
+                    theme={{ colors: { primary: 'rgba(0, 0, 0, 0.4)', } }}
+                    underlineColor={'rgba(0, 0, 0, 0.4)'}
+                    value={lastname}
+                    onChangeText={(val) => { setLastname(val) }}
+                />
 
-            <TextInput
-                label="Linkedin URL"
-                style={styles.inputView}
-                mode={'outlined'}
-                outlineColor={'#E8E6EA'}
-                theme={{ colors: { primary: '#000', } }}
-                underlineColor={'#E8E6EA'}
-            />
-            {/* <TouchableOpacity onPress={() => setVisible(true)}>
+                <TextInput
+                    label="Linkedin URL"
+                    style={styles.inputView}
+                    mode={'outlined'}
+                    outlineColor={'rgba(0, 0, 0, 0.4)'}
+                    theme={{ colors: { primary: 'rgba(0, 0, 0, 0.4)', } }}
+                    underlineColor={'rgba(0, 0, 0, 0.4)'}
+                />
+                {/* <TouchableOpacity onPress={() => setVisible(true)}>
                 <View style={styles.birthdayField}>
                     <Icon size={25} color={constants.title_Colors} name={'calendar'}></Icon>
                     <Text style={styles.birthdayTxt}>{birthday}</Text>
                 </View>
             </TouchableOpacity> */}
-            <Buttons buttonTop={hp('10%')} btnColor={constants.dark_purple} title={'Confrim'} click={() => navigation.navigate('RoleIntersted')}></Buttons>
+                <Buttons buttonTop={hp('10%')} btnColor={constants.dark_purple} title={'Continue'} click={() => navigation.navigate('ProfileDetailMore')}></Buttons>
+                <View style={{ marginBottom: 20 }} />
+            </ScrollView>
+            {Platform.OS == 'ios' && <KeyboardAvoidingView behavior={'padding'} />}
+
             <Modal isVisible={isVisible}>
                 <View style={{ flex: 1 }}>
                     <View style={styles.calendarMainView}>

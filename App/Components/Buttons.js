@@ -15,7 +15,7 @@ const Buttons = ({ navigation, title, click, buttonTop, btnColor }) => {
         marginTop: buttonTop,
         borderRadius: 15, alignSelf: 'center', alignItems: 'center', justifyContent: 'center'
       }}>
-        <Text style={{ fontSize: 20, color: 'white', textAlign: 'center', }}>{title}</Text>
+        <Text style={{ fontSize: wp(5), color: 'white', textAlign: 'center', }}>{title}</Text>
 
       </View>
     </TouchableOpacity>
