@@ -18,6 +18,7 @@ import ShoppingScreenDetail from '../Screens/HeaderScreens/ShoppingScreenDetail'
 import ManagerTabs from './ManagerTabs';
 import Password from '../Screens/AuthScreens/Password';
 import ProfileDetailMore from '../Screens/AuthScreens/ProfileDetailMore';
+import SignIn from '../Screens/AuthScreens/SignIn';
 const Stack = createStackNavigator();
 const MainStackNavigator = () => {
   return (
@@ -64,6 +65,13 @@ const MainStackNavigator = () => {
         component={SwiperScreen}
         options={{ headerShown: false }}
       />
+
+      <Stack.Screen
+        name="SignIn"
+        component={SignIn}
+        options={{ headerShown: false }}
+      />
+
       <Stack.Screen
         name="RoleIntersted"
         component={RoleIntersted}

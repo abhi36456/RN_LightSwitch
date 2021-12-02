@@ -23,4 +23,5 @@ export const images = {
     photo: require("../Assets/photo.png"),
     camera: require("../Assets/camera.png"),
     chat: require("../Assets/chat.png"),
+    email_screen_logo: require("../Assets/email_screen_logo.png"),
 }

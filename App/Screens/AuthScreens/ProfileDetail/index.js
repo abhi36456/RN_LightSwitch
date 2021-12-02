@@ -67,7 +67,7 @@ const ProfileDetail = ({ navigation, title }) => {
                     style={styles.inputView}
                     mode={'outlined'}
                     outlineColor={'rgba(0, 0, 0, 0.4)'}
-                
+
                     theme={{ colors: { primary: 'rgba(0, 0, 0, 0.4)' } }}
                     underlineColor={'rgba(0, 0, 0, 0.4)'}
                     value={firstname}

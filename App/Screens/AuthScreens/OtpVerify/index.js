@@ -53,6 +53,7 @@ const OtpVerfiy = ({ navigation, title }) => {
             style={styles.textInputView}
             maxLength={1}
             ref={input_1}
+            keyboardType={'number-pad'}
             onChangeText={otp1 => {
               setotp1(otp1)
               if (otp1) input_2.current.focus();
@@ -70,6 +71,7 @@ const OtpVerfiy = ({ navigation, title }) => {
             style={styles.textInputView}
             maxLength={1}
             ref={input_2}
+            keyboardType={'number-pad'}
             onChangeText={otp2 => {
               // this.setState({ otp2 })
               setotp2(otp2)
@@ -87,6 +89,7 @@ const OtpVerfiy = ({ navigation, title }) => {
             style={styles.textInputView}
             maxLength={1}
             ref={input_3}
+            keyboardType={'number-pad'}
             onChangeText={otp3 => {
               // this.setState({ otp3 })
               setotp3(otp3)
@@ -105,6 +108,7 @@ const OtpVerfiy = ({ navigation, title }) => {
             style={styles.textInputView}
             maxLength={1}
             ref={input_4}
+            keyboardType={'number-pad'}
             onChangeText={otp4 => {
               // this.setState({ otp4 })
               setotp4(otp4)

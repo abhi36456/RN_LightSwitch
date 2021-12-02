@@ -3,14 +3,10 @@ import {
     Text,
     View,
     Image,
-    Alert,
-    ImageBackground,
-    ScrollView,
     TouchableOpacity,
     StyleSheet
 } from 'react-native';
-import { getBottomSpace, getStatusBarHeight, ifIphoneX } from 'react-native-iphone-x-helper';
-
+import { getStatusBarHeight, ifIphoneX } from 'react-native-iphone-x-helper';
 import constants from '../../../Constants/Colors';
 import {
     widthPercentageToDP as wp,
@@ -19,12 +15,22 @@ import {
 import Buttons from "../../../Components/Buttons"
 import colors from '../../../Constants/Colors';
 import { actuatedNormalize, Fonts } from '../../../utils';
-import { TextInput } from 'react-native';
 import { images } from '../../../Constants/images';
+import { TextInput } from 'react-native-paper';
+import Toast from 'react-native-simple-toast';
 
 const Password = ({ navigation, title }) => {
 
     const [password, setPassword] = useState('')
+    const [is_show, setIsShow] = useState(true)
+
+    const onContinue = () => {
+        if (password == '') {
+            Toast.show('Please enter the password');
+        } else {
+            navigation.navigate('ProfileDetail')
+        }
+    }
 
     return (
         <View style={styles.mainView}>
@@ -44,18 +50,24 @@ const Password = ({ navigation, title }) => {
             </View>
             <Text style={styles.titleTxt}>Create Password</Text>
             <View style={styles.viewWrapper}>
+               
                 <TextInput
+                    label="Password"
+                    style={styles.inputView}
+                    mode={'outlined'}
+                    right={<TextInput.Icon name={is_show ? "eye-off" : "eye"} onPress={() => { setIsShow(!is_show) }} />}
+                    secureTextEntry={is_show ? true : false}
+                    outlineColor={colors.grey_Background}
+                    theme={{ colors: { primary: 'rgba(0, 0, 0, 0.4)', } }}
+                    underlineColor={'rgba(0, 0, 0, 0.4)'}
                     value={password}
-                    secureTextEntry={true}
-                    placeholder={"Enter Password"}
-                    style={styles.inputText}
-                    onChangeText={(val) => setPassword(val)}
+                    onChangeText={(val) => { setPassword(val) }}
                 />
             </View>
             <Buttons
                 btnColor={colors.dark_purple}
                 buttonTop={hp('8%')}
-                click={() => navigation.navigate('ProfileDetail')}
+                click={() => onContinue()}
                 title={'Continue'}>
             </Buttons>
         </View>

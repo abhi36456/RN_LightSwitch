@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
-import {
-
-    StyleSheet
-} from 'react-native';
+import { StyleSheet } from 'react-native';
 import constants from '../../../Constants/Colors';
-import { getBottomSpace, getStatusBarHeight, ifIphoneX } from 'react-native-iphone-x-helper';
+import {  getStatusBarHeight, ifIphoneX } from 'react-native-iphone-x-helper';
 import { actuatedNormalize, Fonts } from '../../../utils';
 import {
     widthPercentageToDP as wp,
@@ -39,7 +36,7 @@ const styles = StyleSheet.create({
     inputView: {
         backgroundColor: "#FFF",
         width: wp('80%'),
-        alignSelf: 'center', 
+        alignSelf: 'center',
         marginTop: hp('2%')
     },
     birthdayField: { width: wp('80%'), marginTop: hp('3%'), alignSelf: 'center', height: hp('7%'), borderRadius: 10, backgroundColor: '#e6e6ff', alignItems: 'center', justifyContent: 'center', flexDirection: 'row' },

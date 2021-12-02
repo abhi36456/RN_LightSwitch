@@ -56,13 +56,6 @@ const ProfileDetailMore = ({ navigation, title }) => {
                             flexDirection: "row",
                             justifyContent: "space-between",
                         }}>
-                            {/* <TextInput
-                                value={currentCompany}
-                                secureTextEntry={true}
-                                placeholder={"Current Role"}
-                                style={styles.inputText}
-                                onChangeText={(val) => setcurrentCompany(val)}
-                            /> */}
                             <Text style={styles.txt_lbl_common}>Software Engineer</Text>
                             <Image source={images.next_arrow} style={styles.next_ic} />
                         </TouchableOpacity>

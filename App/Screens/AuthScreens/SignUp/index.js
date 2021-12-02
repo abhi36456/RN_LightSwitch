@@ -3,9 +3,6 @@ import {
   Text,
   View,
   Image,
-  Alert,
-  ImageBackground,
-  ScrollView,
   TouchableOpacity,
   StyleSheet
 } from 'react-native';
@@ -18,13 +15,41 @@ import Buttons from "../../../Components/Buttons"
 import colors from '../../../Constants/Colors';
 import { actuatedNormalize, Fonts } from '../../../utils';
 import { TextInput } from 'react-native';
+import Toast from 'react-native-simple-toast';
+import { getStatusBarHeight, ifIphoneX } from 'react-native-iphone-x-helper';
+import { images } from '../../../Constants/images';
 
 const SignUp = ({ navigation, title }) => {
 
   const [email, setEmail] = useState('')
 
+  const onPress = () => {
+    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+    if (email == '') {
+      Toast.show('Please enter the email');
+    } else if (!reg.test(email)) {
+      Toast.show('Please enter the valid email');
+    } else {
+      navigation.navigate('OtpVerfiy')
+    }
+  }
+
   return (
     <View style={styles.mainView}>
+      <View style={styles.header}>
+        <View style={styles.headerSubContainer}>
+
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
+            style={styles.backWrapper}>
+            <Image
+              resizeMode={'contain'}
+              source={images.back_pink}
+              style={styles.backIcon}
+            />
+          </TouchableOpacity>
+        </View>
+      </View>
       <Text style={styles.titleTxt}>My email</Text>
       <Text style={styles.subTitleTxt}>
         Please enter your valid email. We will send you a 4-digit code to verify your account.
@@ -42,7 +67,7 @@ const SignUp = ({ navigation, title }) => {
       <Buttons
         btnColor={colors.dark_purple}
         buttonTop={hp('8%')}
-        click={() => navigation.navigate('OtpVerfiy')}
+        click={() => onPress()}
         title={'Continue'}>
       </Buttons>
     </View>
@@ -59,7 +84,7 @@ const styles = StyleSheet.create({
     fontSize: actuatedNormalize(34),
     fontFamily: Fonts.Bold,
     color: 'black',
-    marginTop: hp('15%'),
+    marginTop: hp('8%'),
     width: wp('80%'),
     alignSelf: 'center',
   },
@@ -75,7 +100,7 @@ const styles = StyleSheet.create({
     padding: 16,
     borderColor: colors.grey_Background,
     borderRadius: 12,
-    borderWidth: 1,
+    borderWidth: 1.5,
     fontFamily: Fonts.Regular
   },
   inputImg: {
@@ -88,6 +113,36 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     width: wp('80%'),
     marginTop: hp('5%')
-  }
+  },
+  header: {
+    backgroundColor: constants.white_Colors,
+    ...ifIphoneX(
+      {
+        paddingTop: getStatusBarHeight() + 20
+      },
+      {
+        paddingTop: Platform.OS == "ios" ? getStatusBarHeight() + 15 : 20 // for android 
+      }
+    )
+  },
+  headerSubContainer: {
+    flexDirection: 'row',
+    width: wp("95%"),
+    alignSelf: 'center',
+  },
+  backWrapper: {
+    justifyContent: 'center',
+    borderRadius: 12,
+    borderColor: constants.grey_Background,
+    borderWidth: 1,
+    marginLeft: 16,
+    padding: 16,
+  },
+  backIcon: {
+    width: 15,
+    height: 15,
+    tintColor: constants.dark_purple,
+    alignSelf: 'center'
+  },
 
 });

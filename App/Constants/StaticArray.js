@@ -1,7 +1,13 @@
-export const bannerList = [
-    { img: require('../Assets/slider1.webp') },
-    { img: require('../Assets/slider3.webp') },
-    { img: require('../Assets/slider2.webp') },
+export const professional_bannerList = [
+    { img: require('../Assets/people2.png') },
+    { img: require('../Assets/people4.png') },
+    { img: require('../Assets/people3.png') },
+]
+
+export const manager_bannerList = [
+    { img: require('../Assets/people1.png') },
+    { img: require('../Assets/people3.png') },
+    { img: require('../Assets/people4.png') },
 ]
 
 export const roleInterstedArray = [

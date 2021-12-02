@@ -8,7 +8,7 @@ import {
 } from '../../../Utility/index';
 const {strings, colors, fonts, urls, PATH} = constants;
 const styles = StyleSheet.create({
-  logoImg: { height: hp("15%"), width: wp("40%"), alignSelf: 'center', marginTop: hp('10%') },
+  logoImg: { height: hp("20%"), width: wp("45%"), alignSelf: 'center', marginTop: hp('10%') },
   signUpTxt: { fontSize: 19, fontWeight: '500', color: 'black', textAlign: 'center', marginTop: hp('5%') },
   phoneTxt: { fontSize: 17, fontWeight: '600', color: constants.title_Colors, textAlign: 'center', marginTop: hp('5%') },
   signupWithView: { flexDirection: 'row', alignSelf: 'center', alignItems: 'center', marginTop: hp('5%') },
