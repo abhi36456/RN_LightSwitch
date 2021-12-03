@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import constants from '../../../Constants/Colors';
-import {  getStatusBarHeight, ifIphoneX } from 'react-native-iphone-x-helper';
+import { getStatusBarHeight, ifIphoneX } from 'react-native-iphone-x-helper';
 import { actuatedNormalize, Fonts } from '../../../utils';
 import {
     widthPercentageToDP as wp,
@@ -94,6 +94,23 @@ const styles = StyleSheet.create({
         height: 15,
         tintColor: constants.dark_purple,
         alignSelf: 'center'
+    },
+    rbSheetViewContainer: {
+        width: wp(60),
+        alignSelf: 'center',
+        justifyContent: "space-around",
+        flexDirection: "row",
+        marginTop: actuatedNormalize(20),
+    },
+    rbSheetImage: {
+        width: actuatedNormalize(55),
+        height: actuatedNormalize(55),
+        alignSelf: 'center'
+    },
+    rbSheetText: {
+        fontFamily: Fonts.Bold,
+        margin: actuatedNormalize(8),
+        fontSize: actuatedNormalize(14)
     },
 });
 export default styles

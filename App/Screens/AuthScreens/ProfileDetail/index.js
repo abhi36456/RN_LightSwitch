@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
     Text,
     View,
     Image,
-    Alert,
-    ImageBackground,
     ScrollView,
     TouchableOpacity,
-    StyleSheet,
-    KeyboardAvoidingView
+    KeyboardAvoidingView,
+    PermissionsAndroid
 } from 'react-native';
 import constants from '../../../Constants/Colors';
 import styles from "./style"
@@ -16,25 +14,136 @@ import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
 } from '../../../Utility/index';
-import Buttons from "../../../Components/Buttons"
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { TextInput } from 'react-native-paper';
-import Modal from "react-native-modal";
-import { Calendar } from "react-native-calendars"
+import Buttons from "../../../Components/Buttons";
 import { images } from '../../../Constants/images';
-import { FloatingLabelInput } from 'react-native-floating-label-input';
-
+import { TextInput } from 'react-native-paper';
+import * as ImagePicker from 'react-native-image-picker';
+import RBSheet from "react-native-raw-bottom-sheet";
+import { isIphoneX } from 'react-native-iphone-x-helper';
+import Toast from 'react-native-simple-toast';
 
 const ProfileDetail = ({ navigation, title }) => {
-    const [seletedDate, setSelected] = useState('')
-    const [birthday, setBirthday] = useState('Choose birthday date')
-    const [isVisible, setVisible] = useState(false)
+    const refRBSheet = useRef()
     const [firstname, setFirstname] = useState('')
     const [lastname, setLastname] = useState('')
+    const [url_social, setSocialUrl] = useState('')
+
+    const [profileObject, setProfileObject] = useState(null);
 
 
+    const onContinue = () => {
+        if (firstname == '') {
+            Toast.show('Please enter the firstname');
+        } else if (lastname == '') {
+            Toast.show('Please enter the lastname');
+        } else if (url_social == '') {
+            Toast.show('Please enter the linkedin url');
+        } else {
+            navigation.navigate('ProfileDetailMore')
+        }
+    }
+    // laucnch Gallery anb Camera 
+    const openGallery = (doc_type) => {
+        ImagePicker.launchImageLibrary(
+            {
+                mediaType: 'photo',
+                includeBase64: false,
+                maxHeight: 500,
+                maxWidth: 500,
+            },
+            async (response) => {
+                const result = response.assets[0];
+                setProfileObject(result)
+            },
+        )
+    }
+
+    const openCamera = async () => {
+        try {
+            const granted = await PermissionsAndroid.request(
+                PermissionsAndroid.PERMISSIONS.CAMERA,
+                {
+                    title: "App Camera Permission",
+                    message: "App needs access to your camera ",
+                    buttonNeutral: "Ask Me Later",
+                    buttonNegative: "Cancel",
+                    buttonPositive: "OK"
+                }
+            );
+            if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+                onlaunchCamera()
+            } else {
+                console.log("Camera permission denied");
+            }
+        } catch (err) {
+            console.warn(err);
+        }
+    }
+
+    const onlaunchCamera = () => {
+        ImagePicker.launchCamera(
+            {
+                mediaType: 'photo',
+                includeBase64: false,
+                maxHeight: 500,
+                maxWidth: 500,
+            },
+            async (response) => {
+                const result = response.assets[0];
+                setProfileObject(result)
+            },
+        )
+    }
+
+
+    const _renderRBSheet = () => {
+        return (
+            <RBSheet
+                ref={refRBSheet}
+                height={isIphoneX() ? 150 : 130}
+                openDuration={250}
+                customStyles={{ container: { borderTopLeftRadius: 0, borderTopRightRadius: 0 } }}>
+                <View style={styles.rbSheetViewContainer}>
+                    <TouchableOpacity activeOpacity={0.7}
+                        style={{ padding: 4 }}
+                        onPress={() => {
+                            refRBSheet.current?.close()
+                            setTimeout(() => {
+                                openGallery()
+                            }, 500);
+                        }}>
+                        <Image
+                            resizeMode={'contain'}
+                            style={styles.rbSheetImage}
+                            source={images.gallery}
+                        />
+                        <Text style={styles.rbSheetText}>Open Gallery</Text>
+
+                    </TouchableOpacity>
+
+                    <TouchableOpacity activeOpacity={0.7}
+                        onPress={() => {
+                            refRBSheet.current?.close()
+                            setTimeout(() => {
+                                Platform.OS == "android" ? openCamera() : onlaunchCamera()
+                            }, 500);
+                        }}
+                        style={{ padding: 4 }}>
+                        <Image
+                            resizeMode={'contain'}
+                            style={styles.rbSheetImage}
+                            source={images.cameras}
+                        />
+                        <Text style={styles.rbSheetText}>Open Camera</Text>
+                    </TouchableOpacity>
+
+                </View>
+            </RBSheet >
+        )
+    }
     return (
         <View style={styles.mainView}>
+            {_renderRBSheet()}
             <View style={styles.header}>
                 <View style={styles.headerSubContainer}>
 
@@ -57,17 +166,22 @@ const ProfileDetail = ({ navigation, title }) => {
                 keyboardShouldPersistTaps={'handled'}>
 
                 <Text style={styles.titleTxt}>Tell us about you</Text>
-                <Image source={images.photo}
-                    style={styles.avtarViewImg}></Image>
+                <TouchableOpacity
+                    onPress={() => {
+                        refRBSheet.current?.open()
+                    }}
+                >
+                    <Image source={images.photo}
+                        style={styles.avtarViewImg}></Image>
 
-                <Image source={images.camera} style={styles.avtarCameraIcon} />
+                    <Image source={images.camera} style={styles.avtarCameraIcon} />
+                </TouchableOpacity>
                 {/* <Icon name={'camera'} size={20} color={constants.title_Colors} style={styles.avtarCameraIcon}></Icon> */}
                 <TextInput
                     label="First Name"
                     style={styles.inputView}
                     mode={'outlined'}
                     outlineColor={'rgba(0, 0, 0, 0.4)'}
-
                     theme={{ colors: { primary: 'rgba(0, 0, 0, 0.4)' } }}
                     underlineColor={'rgba(0, 0, 0, 0.4)'}
                     value={firstname}
@@ -85,41 +199,27 @@ const ProfileDetail = ({ navigation, title }) => {
                     onChangeText={(val) => { setLastname(val) }}
                 />
 
-                <TextInput
-                    label="Linkedin URL"
-                    style={styles.inputView}
-                    mode={'outlined'}
-                    outlineColor={'rgba(0, 0, 0, 0.4)'}
-                    theme={{ colors: { primary: 'rgba(0, 0, 0, 0.4)', } }}
-                    underlineColor={'rgba(0, 0, 0, 0.4)'}
-                />
-                {/* <TouchableOpacity onPress={() => setVisible(true)}>
-                <View style={styles.birthdayField}>
-                    <Icon size={25} color={constants.title_Colors} name={'calendar'}></Icon>
-                    <Text style={styles.birthdayTxt}>{birthday}</Text>
+                <View style={{ flexDirection: "row", alignSelf: "center" }}>
+                    <Text style={{ alignSelf: "center", marginTop: 14, marginRight: 4 }}>
+                        www.linkedin.com/in/
+                    </Text>
+                    <TextInput
+                        label="Linkedin URL"
+                        style={[styles.inputView, { width: wp(40) }]}
+                        mode={'outlined'}
+                        outlineColor={'rgba(0, 0, 0, 0.4)'}
+                        theme={{ colors: { primary: 'rgba(0, 0, 0, 0.4)', } }}
+                        underlineColor={'rgba(0, 0, 0, 0.4)'}
+                        value={url_social}
+                        onChangeText={(val) => { setSocialUrl(val) }}
+                    />
                 </View>
-            </TouchableOpacity> */}
-                <Buttons buttonTop={hp('10%')} btnColor={constants.dark_purple} title={'Continue'} click={() => navigation.navigate('ProfileDetailMore')}></Buttons>
+
+                <Buttons buttonTop={hp('10%')} btnColor={constants.dark_purple} title={'Continue'} click={() => onContinue()}></Buttons>
                 <View style={{ marginBottom: 20 }} />
             </ScrollView>
             {Platform.OS == 'ios' && <KeyboardAvoidingView behavior={'padding'} />}
 
-            <Modal isVisible={isVisible}>
-                <View style={{ flex: 1 }}>
-                    <View style={styles.calendarMainView}>
-                        <Calendar
-                            theme={styles.calendarTheme}
-                            hideDayNames={true}
-                            markedDates={seletedDate}
-                            onDayPress={(day) => {
-                                setSelected({ [day.dateString]: { selected: true, selectedColor: constants.title_Colors } })
-                                setBirthday(day.dateString)
-                            }}
-                        />
-                        <Buttons buttonTop={hp('3%')} btnColor={constants.dark_purple} title={'Save'} click={() => setVisible(false)}></Buttons>
-                    </View>
-                </View>
-            </Modal>
         </View>
     );
 };
