@@ -11,7 +11,7 @@ import {
 export const Header = (props) => {
     return (
         <View style={styles.container}>
-            <View />
+            <View style={styles.img_animated} />
             <View>
                 <Text style={styles.text}>{props.title}</Text>
                 <Text style={styles.subText}>{props.subTitle}</Text>
@@ -34,13 +34,13 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10
     },
     text: {
-        fontSize: actuatedNormalize('22'),
+        fontSize: actuatedNormalize('24'),
         fontFamily: Fonts.Bold,
         textAlign: 'center'
     },
     subText: {
-        fontSize: actuatedNormalize('18'),
-        fontFamily: Fonts.Bold,
+        fontSize: actuatedNormalize('16'),
+        fontFamily: Fonts.Regular,
         textAlign: 'center'
     },
     image: {

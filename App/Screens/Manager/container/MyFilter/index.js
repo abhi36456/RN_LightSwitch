@@ -9,6 +9,16 @@ import { Input } from "react-native-elements"
 import Buttons from "../../../../Components/Buttons"
 import { Header } from '../../../../Components/commonHeader';
 import { images } from '../../../../Constants/images';
+import PickerModel from '../pickerModel';
+
+let Suggestion_List = [
+    "Software Engineer",
+    "Software developer",
+    "Sonta Luis",
+    "Sonta Devops",
+    "Developer",
+    "Project Managaer",
+]
 var data =
     [
         { key: 'Android' }, { key: 'iOS' }, { key: 'Java' }, { key: 'Swift' },
@@ -18,6 +28,9 @@ var data =
 const FiltterScreen = () => {
     const [roleArray, setRoleArray] = useState(roleInterstedArray.roleInterstedArray)
     const [selectedDegree, setSelectedDegree] = useState('')
+    const [dataList, setDataList] = useState(Suggestion_List);
+    const [blnSearchModal, setblnSearchModal] = useState(false);
+
     const changeValue = (itemSelected, index) => {
         const newData = roleArray.map(item => {
             if (item.id == itemSelected.id) {
@@ -39,6 +52,23 @@ const FiltterScreen = () => {
     return (
         <View style={{ backgroundColor: constant.white_Colors, flex: 1 }}>
 
+            <PickerModel
+                blnSearchModal={blnSearchModal}
+                dataList={dataList}
+                backDropPress={() => { setblnSearchModal(!blnSearchModal) }}
+                onChangePress={(text) => {
+                    // setProdname(text)
+                    let data = Suggestion_List.filter(item => {
+                        const query = text.toLowerCase();
+                        return (
+                            (item).toLowerCase().indexOf(query) >= 0
+                        )
+                    });
+                    setDataList(data)
+
+                }}
+                onSelectedPress={() => { setblnSearchModal(!blnSearchModal) }}
+            />
             <Header
                 headerText={"Filters"}
                 back_icons={false}
@@ -50,7 +80,9 @@ const FiltterScreen = () => {
                     <Text style={styles.titleTxt}>
                         Current Role
                      </Text>
-                    <Image source={images.image_add} style={styles.img_animated} />
+                    <TouchableOpacity onPress={() => { setblnSearchModal(true) }}>
+                        <Image source={images.image_add} style={styles.img_animated} />
+                    </TouchableOpacity>
                 </View>
 
                 <View style={styles.inner_row}>
@@ -71,7 +103,9 @@ const FiltterScreen = () => {
                         <Text style={styles.titleTxt}>
                             Current Company
                      </Text>
-                        <Image source={images.image_add} style={styles.img_animated} />
+                        <TouchableOpacity onPress={() => { setblnSearchModal(true) }}>
+                            <Image source={images.image_add} style={styles.img_animated} />
+                        </TouchableOpacity>
                     </View>
 
                     <View style={styles.inner_row}>
@@ -92,7 +126,9 @@ const FiltterScreen = () => {
                         <Text style={styles.titleTxt}>
                             Skills
                      </Text>
-                        <Image source={images.image_add} style={styles.img_animated} />
+                        <TouchableOpacity onPress={() => { setblnSearchModal(true) }}>
+                            <Image source={images.image_add} style={styles.img_animated} />
+                        </TouchableOpacity>
                     </View>
 
                     <View style={styles.inner_row}>
@@ -113,7 +149,9 @@ const FiltterScreen = () => {
                         <Text style={styles.titleTxt}>
                             Looking For
                      </Text>
-                        <Image source={images.image_add} style={styles.img_animated} />
+                        <TouchableOpacity onPress={() => { setblnSearchModal(true) }}>
+                            <Image source={images.image_add} style={styles.img_animated} />
+                        </TouchableOpacity>
                     </View>
 
                     <View style={styles.inner_row}>
@@ -134,7 +172,9 @@ const FiltterScreen = () => {
                         <Text style={styles.titleTxt}>
                             Gender
                      </Text>
-                        <Image source={images.image_add} style={styles.img_animated} />
+                        <TouchableOpacity onPress={() => { setblnSearchModal(true) }}>
+                            <Image source={images.image_add} style={styles.img_animated} />
+                        </TouchableOpacity>
                     </View>
 
                     <View style={styles.inner_row}>

@@ -78,29 +78,35 @@ const styles = StyleSheet.create({
         right: 5
     },
     txt_lbl: {
+        width: wp(85),
         color: colors.violate,
         fontSize: actuatedNormalize(16),
         fontFamily: fonts.Bold,
-        marginLeft: 16,
         padding: actuatedNormalize(6),
-        paddingLeft: 0
+        alignSelf: "center",
     },
     borderview: {
         backgroundColor: colors.black_border,
-        height: 1,
-        marginVertical: 8
+        height: 0,
+        marginVertical: 4
     },
     txtInput: {
-        width: wp("90%"),
+        width: wp(85),
         alignSelf: "center",
-        padding: actuatedNormalize(6),
-        paddingLeft: 0
+        flexDirection: "row",
+        justifyContent: "space-between",
+        padding: actuatedNormalize(16),
+        borderRadius: actuatedNormalize(16),
+        borderWidth: 1,
+        borderColor: colors.grey_Background
     },
     input_row: {
+        width: wp(85),
+        alignSelf: "center",
         flexDirection: "row",
         justifyContent: "space-between",
         paddingBottom: 16,
-        marginRight: 16
+        padding: actuatedNormalize(6),
     },
     img_add: {
         width: wp("4.5%"),
@@ -128,6 +134,45 @@ const styles = StyleSheet.create({
         fontSize: actuatedNormalize("12"),
         color: colors.white_Colors,
         fontFamily: Fonts.Regular,
+    },
+    rbSheetViewContainer: {
+        width: wp(60),
+        alignSelf: 'center',
+        justifyContent: "space-around",
+        flexDirection: "row",
+        marginTop: actuatedNormalize(20),
+    },
+    rbSheetImage: {
+        width: actuatedNormalize(55),
+        height: actuatedNormalize(55),
+        alignSelf: 'center'
+    },
+    rbSheetText: {
+        fontFamily: Fonts.Bold,
+        margin: actuatedNormalize(8),
+        fontSize: actuatedNormalize(14)
+    },
+    input_wrapper: {
+        width: wp(85),
+        alignSelf: "center",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        padding: actuatedNormalize(12),
+        borderRadius: actuatedNormalize(16),
+        borderWidth: 1,
+        borderColor: colors.grey_Background
+    },
+    txt_lbl_common: {
+        color: colors.black_gray,
+        fontSize: actuatedNormalize(16),
+        fontFamily: fonts.Bold,
+        padding: actuatedNormalize(6),
+        paddingLeft: 0
+    },
+    next_ic: {
+        alignSelf: "center",
+        width: wp("3%"),
+        height: wp("3%")
     },
 });
 

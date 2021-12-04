@@ -1,5 +1,5 @@
-import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
+import React, { useCallback } from 'react'
+import { StyleSheet, Text, View, Image, Alert } from 'react-native'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { actuatedNormalize, colors, Fonts, Icons } from '../../../utils';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -14,7 +14,9 @@ import {
     heightPercentageToDP as hp,
 } from '../../../Utility/index';
 import { TouchableOpacity } from 'react-native';
-export const JobsListComponent = ({ item, onPress, fromDetail, navigation, color }) => {
+export const JobsListComponent = ({ item, onPress, fromDetail, navigation, color, handleCloseButton }) => {
+
+
     return (
         <>
             <TouchableWithoutFeedback onPress={onPress}>
@@ -44,12 +46,14 @@ export const JobsListComponent = ({ item, onPress, fromDetail, navigation, color
                 </View>
             </TouchableWithoutFeedback>
             <View style={[styles.bottomView, styles.row, { display: fromDetail ? 'none' : 'flex' }]}>
-                <View style={styles.buttonView}>
+                <TouchableOpacity style={styles.buttonView}
+                    onPress={() => handleCloseButton()}
+                >
                     <Image
                         resizeMode={"contain"}
                         style={styles.img_ic}
                         source={images.close_bold} />
-                </View>
+                </TouchableOpacity>
                 <TouchableOpacity
                     onPress={() => navigation.navigate("ManagerJobs")}
                     style={styles.buttonView}>

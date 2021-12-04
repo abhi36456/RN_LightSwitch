@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
-import { ScrollView, Text, View, KeyboardAvoidingView } from 'react-native'
+import React, { useState, useRef } from 'react';
+import { ScrollView, Text, View, KeyboardAvoidingView, Image, findNodeHandle } from 'react-native'
 import colors from '../../../../Constants/Colors';
+import { images } from '../../../../Constants/images';
 import styles from './style';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from '../../../../Utility/index';
 import { actuatedNormalize, Fonts } from '../../../../utils';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { TextInput } from 'react-native';
 import { Header } from '../../../../Components/commonHeader';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+
 
 const MyFireSide = ({ navigation, props }) => {
     const [selected_type, setSelectedType] = useState(1)
@@ -16,11 +20,16 @@ const MyFireSide = ({ navigation, props }) => {
     const [s_time, setTime] = useState('')
     const [about, setAbout] = useState('')
 
+    let myScrollView = useRef(null)
+    let myViewRef = useRef(null)
+
+
 
     const renderEdit = () => {
         return (
             <>
-                <ScrollView style={{ flex: 1, alignSelf: "center" }}>
+                <ScrollView
+                    style={{ flex: 1, alignSelf: "center" }}>
                     <>
                         <View style={{ marginVertical: wp("1%") }} />
                         <TouchableOpacity style={styles.button_wrapper} onPress={() => { setSelectedType(1) }}>
@@ -84,6 +93,54 @@ const MyFireSide = ({ navigation, props }) => {
         )
     }
 
+    const renderView = () => {
+        return (
+            <View style={{ alignSelf: "center", flex: 0.95 }}>
+                <ScrollView
+                    style={styles.slider_view}>
+                    <View style={{ padding: wp("6%") }}>
+                        <Image
+                            borderRadius={100}
+                            source={images.elon}
+                            resizeMode={"cover"}
+                            style={styles.profile_ic}
+                        />
+                        <Text style={styles.bold_title}>Elon Musk</Text>
+                        <Text style={styles.bold_regular}>CEO @ Telsa</Text>
+                        <Text style={styles.blue_regular}>www.linkedin.com/in/elonmusk</Text>
+                    </View>
+                    <View style={{ backgroundColor: colors.violate, height: 1, width: wp(100) }} />
+                    <View style={{ padding: wp("6%") }}>
+                        <Text style={styles.bold_title}>Virtual AMA</Text>
+                        <View style={{ ...styles.row, marginVertical: 10 }}>
+                            <FontAwesome5 name={'users'} size={18} color={colors.violate} />
+                            <Text style={{ ...styles.subText }}>{"20 people"}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <FontAwesome5 name={'map'} size={18} color={colors.violate} style={{ marginRight: 5 }} />
+                            <Text style={{ ...styles.subText }}>{"Newyork"}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <FontAwesome5 name={'calendar'} size={18} color={colors.violate} style={{ marginRight: 5 }} />
+                            <Text style={{ ...styles.subText }}>{"Monday nov 2021"}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <FontAwesome5 name={'clock'} size={18} color={colors.violate} style={{ marginRight: 5 }} />
+                            <Text style={{ ...styles.subText }}>{"s-6pm IST"}</Text>
+                        </View>
+                        <Text style={styles.headingText}>
+                            {`About`}
+                        </Text>
+                        <Text style={styles.text}>
+                            {"I am going to invite 20 people online to ask me anything for 1 hour"}
+                        </Text>
+                    </View>
+                    <View style={{ marginVertical: wp("5%") }} />
+                </ScrollView>
+            </View >
+        )
+    }
+
     return (
         <View style={{
             flex: 1,
@@ -123,9 +180,7 @@ const MyFireSide = ({ navigation, props }) => {
                 renderEdit()
 
                 :
-                <View style={{ alignSelf: "center", flex: 0.95 }}>
-                    <Text>No data</Text>
-                </View>
+                renderView()
             }
 
         </View>

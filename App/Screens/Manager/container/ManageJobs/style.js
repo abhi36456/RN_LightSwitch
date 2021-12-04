@@ -76,15 +76,15 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         position: "absolute",
         bottom: 5,
-        right: 2
+        right: 2,
     },
     txt_lbl: {
+        width: wp(85),
         color: colors.violate,
         fontSize: actuatedNormalize(16),
         fontFamily: fonts.Bold,
-        marginLeft: 16,
         padding: actuatedNormalize(6),
-        paddingLeft: 0
+        alignSelf: "center",
     },
     txt_lbl_common: {
         color: colors.black_gray,
@@ -95,16 +95,25 @@ const styles = StyleSheet.create({
     },
     borderview: {
         backgroundColor: colors.black_border,
-        height: 1,
-        marginVertical: 8
+        height: 0,
+        marginVertical: 4
     },
     input_wrapper: {
-        width: wp("90%"),
+        width: wp(85),
         alignSelf: "center",
         flexDirection: "row",
         justifyContent: "space-between",
-        padding: actuatedNormalize(6),
-        paddingLeft: 0
+        padding: actuatedNormalize(12),
+        borderRadius: actuatedNormalize(16),
+        borderWidth: 1,
+        borderColor: colors.grey_Background
+    },
+    input_wrapper_2: {
+        color: '#0094FF',
+        borderRadius: actuatedNormalize(16),
+        borderWidth: 1,
+        padding: actuatedNormalize(16),
+        borderColor: colors.grey_Background
     },
     next_ic: {
         alignSelf: "center",
@@ -192,19 +201,36 @@ const styles = StyleSheet.create({
         fontFamily: Fonts.Italic,
     },
     button_wrapper: {
-        padding: 5,
+        padding: 8,
         backgroundColor: colors.violate,
-        width: wp("24%"),
+        width: wp(22),
         alignSelf: "flex-end",
         marginRight: 16,
         borderRadius: 16
     },
-    txt_save:{
+    txt_save: {
         fontFamily: Fonts.Bold,
         color: colors.white_Colors,
         textAlign: 'center',
         fontSize: actuatedNormalize(14)
-    }
+    },
+    rbSheetViewContainer: {
+        width: wp(60),
+        alignSelf: 'center',
+        justifyContent: "space-around",
+        flexDirection: "row",
+        marginTop: actuatedNormalize(20),
+    },
+    rbSheetImage: {
+        width: actuatedNormalize(55),
+        height: actuatedNormalize(55),
+        alignSelf: 'center'
+    },
+    rbSheetText: {
+        fontFamily: Fonts.Bold,
+        margin: actuatedNormalize(8),
+        fontSize: actuatedNormalize(14)
+    },
 });
 
 export default styles;

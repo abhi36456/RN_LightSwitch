@@ -6,7 +6,8 @@ import {
     ScrollView,
     TouchableOpacity,
     KeyboardAvoidingView,
-    PermissionsAndroid
+    PermissionsAndroid,
+    Platform
 } from 'react-native';
 import constants from '../../../Constants/Colors';
 import styles from "./style"
@@ -19,8 +20,9 @@ import { images } from '../../../Constants/images';
 import { TextInput } from 'react-native-paper';
 import * as ImagePicker from 'react-native-image-picker';
 import RBSheet from "react-native-raw-bottom-sheet";
-import { isIphoneX } from 'react-native-iphone-x-helper';
+import { isIphoneX, getStatusBarHeight } from 'react-native-iphone-x-helper';
 import Toast from 'react-native-simple-toast';
+
 
 const ProfileDetail = ({ navigation, title }) => {
     const refRBSheet = useRef()
@@ -29,6 +31,7 @@ const ProfileDetail = ({ navigation, title }) => {
     const [url_social, setSocialUrl] = useState('')
 
     const [profileObject, setProfileObject] = useState(null);
+
 
 
     const onContinue = () => {
@@ -96,6 +99,8 @@ const ProfileDetail = ({ navigation, title }) => {
     }
 
 
+
+
     const _renderRBSheet = () => {
         return (
             <RBSheet
@@ -144,6 +149,7 @@ const ProfileDetail = ({ navigation, title }) => {
     return (
         <View style={styles.mainView}>
             {_renderRBSheet()}
+
             <View style={styles.header}>
                 <View style={styles.headerSubContainer}>
 
@@ -171,8 +177,10 @@ const ProfileDetail = ({ navigation, title }) => {
                         refRBSheet.current?.open()
                     }}
                 >
-                    <Image source={images.photo}
-                        style={styles.avtarViewImg}></Image>
+                    <Image
+                        source={profileObject && profileObject != '' ? { uri: profileObject.uri ? profileObject.uri : profileObject } : images.photo}
+                        style={styles.avtarViewImg}>
+                    </Image>
 
                     <Image source={images.camera} style={styles.avtarCameraIcon} />
                 </TouchableOpacity>
@@ -199,13 +207,13 @@ const ProfileDetail = ({ navigation, title }) => {
                     onChangeText={(val) => { setLastname(val) }}
                 />
 
-                <View style={{ flexDirection: "row", alignSelf: "center" }}>
-                    <Text style={{ alignSelf: "center", marginTop: 14, marginRight: 4 }}>
+                <View style={{ flexDirection: "row", marginTop: hp('2%'), alignSelf: "center" }}>
+                    <Text style={{ alignSelf: "center", marginTop: 8, marginRight: 8 }}>
                         www.linkedin.com/in/
                     </Text>
                     <TextInput
                         label="Linkedin URL"
-                        style={[styles.inputView, { width: wp(40) }]}
+                        style={[styles.inputView, { width: wp(42), marginTop: 0 }]}
                         mode={'outlined'}
                         outlineColor={'rgba(0, 0, 0, 0.4)'}
                         theme={{ colors: { primary: 'rgba(0, 0, 0, 0.4)', } }}
@@ -214,8 +222,8 @@ const ProfileDetail = ({ navigation, title }) => {
                         onChangeText={(val) => { setSocialUrl(val) }}
                     />
                 </View>
-
-                <Buttons buttonTop={hp('10%')} btnColor={constants.dark_purple} title={'Continue'} click={() => onContinue()}></Buttons>
+                <View style={{ marginTop: hp('10%') }} />
+                <Buttons btnColor={constants.dark_purple} title={'Continue'} click={() => onContinue()}></Buttons>
                 <View style={{ marginBottom: 20 }} />
             </ScrollView>
             {Platform.OS == 'ios' && <KeyboardAvoidingView behavior={'padding'} />}

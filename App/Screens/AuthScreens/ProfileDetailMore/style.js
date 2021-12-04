@@ -10,6 +10,7 @@ import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
 } from '../../../Utility/index';
+import colors from '../../../Constants/Colors';
 const styles = StyleSheet.create({
     mainView: { flex: 1, backgroundColor: 'white' },
     titleTxt: {
@@ -108,7 +109,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         paddingBottom: 16,
-        marginTop:hp(4)
+        marginTop: hp(4)
     },
     txt_lbl: {
         color: constants.violate,
@@ -128,5 +129,19 @@ const styles = StyleSheet.create({
         padding: actuatedNormalize(6),
         paddingLeft: 0
     },
+    button_wrapper: {
+        padding: 8,
+        backgroundColor: colors.violate,
+        width: wp("20%"),
+        alignSelf: "center",
+        borderRadius: 16,
+        marginBottom: 10
+    },
+    txt_save: {
+        fontFamily: Fonts.Bold,
+        color: colors.white_Colors,
+        textAlign: 'center',
+        fontSize: actuatedNormalize(14)
+    }
 });
 export default styles

@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
         width: wp("24%"),
         height: wp("24%"),
         alignSelf: "center",
-        marginBottom: wp('5%')
+        marginBottom: wp('5%'),
     },
     header: {
         backgroundColor: constants.white_Colors,
@@ -78,23 +78,25 @@ const styles = StyleSheet.create({
         right: 5
     },
     txt_lbl: {
+        width: wp(85),
         color: colors.violate,
         fontSize: actuatedNormalize(16),
         fontFamily: fonts.Bold,
-        marginLeft: 16,
         padding: actuatedNormalize(6),
-        paddingLeft: 0
+        alignSelf: "center",
     },
     borderview: {
         backgroundColor: colors.black_border,
-        height: 1,
-        marginVertical: 8
+        height: 0,
+        marginVertical: 4
     },
     txtInput: {
-        width: wp("90%"),
+        width: wp(85),
         alignSelf: "center",
-        padding: actuatedNormalize(6),
-        paddingLeft: 0
+        padding: actuatedNormalize(16),
+        borderRadius: actuatedNormalize(16),
+        borderWidth: 1,
+        borderColor: colors.grey_Background
     },
     input_row: {
         flexDirection: "row",
@@ -130,9 +132,9 @@ const styles = StyleSheet.create({
         fontFamily: Fonts.Regular,
     },
     button_wrapper: {
-        padding: 5,
+        padding: 8,
         backgroundColor: colors.violate,
-        width: wp("24%"),
+        width: wp(22),
         alignSelf: "flex-end",
         marginRight: 16,
         borderRadius: 16
@@ -148,7 +150,117 @@ const styles = StyleSheet.create({
         justifyContent: "space-evenly",
         width: wp("70%"),
         alignSelf: "center"
-    }
+    },
+    mainView: {
+        height: hp('64%'),
+        marginTop: 16,
+    },
+    iconMainView: {
+        flexDirection: 'row',
+        width: wp('30%'),
+        alignSelf: 'center',
+        marginTop: 16,
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
+    swiperImage: {
+        height: hp('50%'),
+        width: wp('80%'),
+    },
+    bold_title: {
+        fontSize: actuatedNormalize("22"),
+        color: colors.violate,
+        marginBottom: 2,
+        fontFamily: Fonts.Bold,
+    },
+    bold_regular: {
+        fontSize: actuatedNormalize("18"),
+        color: colors.black,
+        marginBottom: 4,
+        fontFamily: Fonts.Bold,
+    },
+    blue_regular: {
+        fontSize: actuatedNormalize("16"),
+        color: "#0094FF",
+        fontFamily: Fonts.Italic,
+    },
+    black_regular: {
+        fontSize: actuatedNormalize("12"),
+        color: colors.white,
+        fontFamily: Fonts.Regular,
+    },
+    flex_row: {
+        flexDirection: "row",
+        justifyContent: "space-between"
+    },
+    paddder: {
+        width: wp("30%"),
+        padding: hp("1.5%"),
+        borderRadius: 8,
+        backgroundColor: colors.violate,
+    },
+    buttonView: {
+        height: 45,
+        width: 45,
+        borderRadius: 22.5,
+        backgroundColor: colors.white,
+        justifyContent: 'center',
+        alignSelf: 'center',
+        alignItems: 'center',
+        shadowColor: '#00000029',
+        shadowOpacity: 0.8,
+        shadowRadius: 3,
+        shadowOffset: { height: 4, width: 0 },
+    },
+    img_ic: {
+        height: wp("3.2%"),
+        width: wp("3.2%"),
+        alignSelf: "center"
+    },
+    img_star: {
+        height: wp("4%"),
+        width: wp("4%"),
+        alignSelf: "center"
+    },
+    slider_view: {
+        borderColor: "#7165FF",
+        borderWidth: 2,
+        width: wp("80%"),
+        borderRadius: 15,
+        // padding: wp("6%")
+    },
+    profile_ic: {
+        width: wp("24%"),
+        height: wp("24%"),
+        alignSelf: "center",
+        marginBottom: wp('5%')
+    },
+    headingText: {
+        fontSize: actuatedNormalize('20'),
+        fontFamily: fonts.Bold,
+        color: colors.violate,
+        marginVertical: '5%'
+    },
+    subHeadingText: {
+        fontSize: actuatedNormalize('18'),
+        fontFamily: fonts.Bold,
+        color: colors.black,
+        marginVertical: '5%'
+    },
+    text: {
+        fontSize: actuatedNormalize('16'),
+        fontFamily: fonts.Regular
+    },
+    subText: {
+        fontSize: actuatedNormalize('14'),
+        fontFamily: Fonts.Regular,
+        marginLeft: 10
+    },
+    row: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 5
+    },
 });
 
 export default styles;

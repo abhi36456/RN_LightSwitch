@@ -7,6 +7,7 @@ import JobDetail from '../Screens/Manager/container/JobDetail';
 import DiscoverdPeople from '../Screens/Manager/container/DiscoverdPeople';
 import MyFilter from '../Screens/Manager/container/MyFilter';
 import ManagerJobs from '../Screens/Manager/container/ManageJobs';
+import MyFireSide from '../Screens/Manager/container/MyFireside';
 
 const Stack = createStackNavigator();
 const ManagerJobsStack = () => {
@@ -26,6 +27,12 @@ const ManagerJobsStack = () => {
       <Stack.Screen
         name="DiscoverdPeople"
         component={DiscoverdPeople}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="MyFireSide"
+        component={MyFireSide}
         options={{ headerShown: false }}
       />
 

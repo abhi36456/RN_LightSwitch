@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Text,
   View,
@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
   StyleSheet,
+  Alert,
   FlatList
 } from 'react-native';
 import { jobsList } from '../../../../data';
@@ -22,14 +23,42 @@ import {
 const JobsList = ({ navigation }) => {
   const [isVisible, setVisible] = useState(true)
   const [ismenuVisible, setMenuVisible] = useState(false)
+  const [refresh, setRefresh] = useState(false)
+  const [JobData, setJobData] = useState([])
 
+  useEffect(() => {
+    setJobData(jobsList)
+  }, [jobsList]);
+
+  const handleCloseButton = useCallback((item) => {
+    Alert.alert(
+      'Confirmation',
+      'Are you sure you want to delete this record?', [{
+        text: 'No',
+        onPress: () => console.log('Cancel Pressed'),
+        style: 'cancel'
+      }, {
+        text: 'Yes',
+        onPress: () => {
+          const index = JobData.indexOf(item);
+          if (index > -1) {
+            JobData.splice(index, 1);
+            setRefresh(!refresh)
+          }
+        }
+      },], {
+      cancelable: false
+    }
+    )
+    return true;
+  })
 
   return (
 
     <SafeAreaView style={styles.container}>
       <Header
-        title={''}
-        subTitle={''}
+        title={'My'}
+        subTitle={'Jobs'}
         onPress={() => { setMenuVisible(!ismenuVisible) }}
       />
       {/* <NotificationsPopup
@@ -43,10 +72,19 @@ const JobsList = ({ navigation }) => {
         {
           ismenuVisible &&
           <View style={styles.viewContainer}>
-            <TouchableOpacity style={{ padding: 2, paddingBottom: 4 }}>
+            <TouchableOpacity onPress={() => {
+              setMenuVisible(false),
+                navigation.navigate("ManagerJobs")
+            }}
+              style={{ padding: 2, paddingBottom: 4 }}>
               <Text style={styles.txt_style}>Job</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={{ padding: 2 }}>
+            <TouchableOpacity
+              onPress={() => {
+                setMenuVisible(false),
+                  navigation.navigate("MyFireSide")
+              }}
+              style={{ padding: 2 }}>
               <Text style={styles.txt_style}>Fireside</Text>
             </TouchableOpacity>
           </View>
@@ -54,10 +92,19 @@ const JobsList = ({ navigation }) => {
         <FlatList
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ paddingBottom: '20%' }}
-          data={jobsList}
+          data={JobData}
+          // refreshing={refresh}
+          // onRefresh={() => {
+          //   setJobData(jobsList)
+          //   setTimeout(() => {
+          //     setRefresh(false)
+          //   }, 1000);
+          // }}
+          extraData={!refresh}
           renderItem={({ item }) => (
             <JobsListComponent item={item}
               navigation={navigation}
+              handleCloseButton={() => { handleCloseButton(item) }}
               onPress={() => navigation.navigate('JobDetail', { data: item })}
             />)}
           keyExtractor={(item) => item.key}

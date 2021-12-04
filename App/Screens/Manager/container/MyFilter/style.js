@@ -60,8 +60,9 @@ const styles = StyleSheet.create({
     title_row: {
         flexDirection: "row",
         justifyContent: "space-between",
-        paddingBottom: 16
-    }, 
+        paddingVertical: 12,
+        paddingHorizontal: 10
+    },
     main_row: {
         width: wp("90%"),
         alignSelf: 'center',

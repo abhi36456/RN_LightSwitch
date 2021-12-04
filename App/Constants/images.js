@@ -27,4 +27,6 @@ export const images = {
     cameras: require("../Assets/cameras.png"),
     gallery: require("../Assets/gallery.png"),
     user_rofile: require("../Assets/user-profile.png"),
+    back_dark_grey: require("../Assets/back_dark_grey.png"),
+    elon: require("../Assets/elon.jpg"),
 }

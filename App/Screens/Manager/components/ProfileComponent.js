@@ -11,6 +11,7 @@ export const ProfileComponent = ({ }) => {
         <View style={{ flex: 1 }}>
             <ScrollView style={styles.slider_view}>
                 <Image
+                    borderRadius={100}
                     source={images.user_round}
                     style={styles.profile_ic}
                 />
