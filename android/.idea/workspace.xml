@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="817e7421-4af5-43e3-8b02-5c9c66097818" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../WinBri/android/app/src/main/res/drawable/winbri_logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../WinBri/android/app/src/main/res/drawable/winbri_logo_text.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../WinBri/android/app/src/main/res/drawable/winbri_logo_text_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../WinBri/android/app/src/main/res/layout/launch_screen.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="220kmWtshjIIphTTlEYgIICBaRU" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="817e7421-4af5-43e3-8b02-5c9c66097818" name="Default Changelist" comment="" />
+      <created>1638982052289</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1638982052289</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="446" y="158" key="#Gradle" timestamp="1638983646823">
+      <screen x="0" y="23" width="1366" height="668" />
+    </state>
+    <state x="446" y="158" key="#Gradle/0.23.1366.668@0.23.1366.668" timestamp="1638983646823" />
+  </component>
+</project>
