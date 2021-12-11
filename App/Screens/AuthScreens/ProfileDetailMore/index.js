@@ -21,17 +21,8 @@ import { images } from '../../../Constants/images';
 import colors from '../../../Constants/Colors';
 import { isIphoneX, getStatusBarHeight } from 'react-native-iphone-x-helper';
 import { Fonts } from '../../../utils';
-
-
-let Suggestion_List = [
-    "Software Engineer",
-    "Software developer",
-    "Sonta Luis",
-    "Sonta Devops",
-    "Developer",
-    "Project Managaer",
-]
-
+import AuthHeader from '../../../Components/AuthHeader';
+import { input_placeholder_text, Suggestion_List } from '../../../data';
 
 let looking_for = [{
     item: 'Aws',
@@ -45,10 +36,7 @@ const ProfileDetailMore = ({ navigation, title }) => {
     const [currentCompany, setcurrentCompany] = useState('')
     const [prodname, setProdname] = useState('Software Engineer')
     const [blnSearchModal, setblnSearchModal] = useState(false);
-
     const [e_data, sete_data] = useState(false);
-
-
     const [dataList, setDataList] = useState(Suggestion_List);
 
     const ListSearchModel = () => {
@@ -63,7 +51,6 @@ const ProfileDetailMore = ({ navigation, title }) => {
                 avoidKeyboard={false}
                 onBackButtonPress={() => setblnSearchModal(false)}
             >
-
                 <View
                     style={{
                         width: wp(100), height: hp(100), zIndex: -1,
@@ -177,25 +164,10 @@ const ProfileDetailMore = ({ navigation, title }) => {
         )
     }
 
-
-
     return (
         <View style={styles.mainView}>
             {ListSearchModel()}
-            <View style={styles.header}>
-                <View style={styles.headerSubContainer}>
-
-                    <TouchableOpacity
-                        onPress={() => navigation.goBack()}
-                        style={styles.backWrapper}>
-                        <Image
-                            resizeMode={'contain'}
-                            source={images.back_pink}
-                            style={styles.backIcon}
-                        />
-                    </TouchableOpacity>
-                </View>
-            </View>
+            <AuthHeader navigation={navigation} />
 
             <ScrollView
                 bounces={false}
@@ -208,16 +180,8 @@ const ProfileDetailMore = ({ navigation, title }) => {
                     <>
                         <Text style={{ ...styles.titleTxt, color: colors.violate, fontSize: wp(5), marginBottom: 8 }}>Current Role</Text>
                         <TouchableOpacity
-                            onPress={() => {
-                                setblnSearchModal(true)
-                            }}
-                            style={{
-                                ...styles.inputText,
-                                width: wp("80%"),
-                                alignSelf: "center",
-                                flexDirection: "row",
-                                justifyContent: "space-between",
-                            }}>
+                            onPress={() => { setblnSearchModal(true) }}
+                            style={{ ...styles.suggestion_input }}>
                             <Text style={styles.txt_lbl_common}>{prodname}</Text>
                             <Image source={images.next_arrow} style={styles.next_ic} />
                         </TouchableOpacity>
@@ -227,7 +191,7 @@ const ProfileDetailMore = ({ navigation, title }) => {
                         <TextInput
                             value={currentCompany}
                             secureTextEntry={true}
-                            placeholder={"Current Company"}
+                            placeholder={input_placeholder_text.current_company}
                             style={styles.inputText}
                             onChangeText={(val) => setcurrentCompany(val)}
                         />
@@ -265,40 +229,14 @@ const ProfileDetailMore = ({ navigation, title }) => {
                     </View>
 
                     <View style={styles.inner_row}>
-                        {/* <TouchableOpacity style={styles.paddder} onLongPress={() => { alert("hello") }}>
-                            <Image source={images.remove} style={styles.close_ic}></Image>
-                            <Text style={styles.black_regular}>Aws</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.paddder}>
-                            <Image source={images.remove} style={styles.close_ic}></Image>
-                            <Text style={styles.black_regular}>Python</Text>
-                        </TouchableOpacity> */}
-
                         {!e_data && looking_for.map((data) => {
                             return (
-                                < TouchableOpacity style={styles.paddder} onLongPress={() => { data.is_close = true }}>
+                                <TouchableOpacity style={styles.paddder} onLongPress={() => { data.is_close = true }}>
                                     {data.is_close && <Image source={images.remove} style={styles.close_ic}></Image>}
                                     <Text style={styles.black_regular}>{data.item}{data.is_close}</Text>
                                 </TouchableOpacity>
                             )
                         })}
-
-                        {/* <FlatList
-                            nestedScrollEnabled
-                            numColumns={2}
-                            data={looking_for}
-                            extraData={!e_data}
-                            // contentContainerStyle={styles.inner_row}
-                            keyExtractor={(item, index) => index.toString()}
-                            renderItem={({ item, index }) => {
-                                return (
-                                    <TouchableOpacity style={styles.paddder} onLongPress={() => { item.is_close = true, sete_data(!e_data) }}>
-                                        {item.is_close && <Image source={images.remove} style={styles.close_ic}></Image>}
-                                        <Text style={styles.black_regular}>{item.item}</Text>
-                                    </TouchableOpacity>
-                                )
-                            }}
-                        /> */}
                     </View>
                     <View style={{ marginVertical: wp("8%") }} />
                 </View>
@@ -306,10 +244,6 @@ const ProfileDetailMore = ({ navigation, title }) => {
                 <View style={{ marginBottom: 20 }} />
             </ScrollView>
             { Platform.OS == 'ios' && <KeyboardAvoidingView behavior={'padding'} />}
-
-            {/* <Modal isVisible={isVisible}>
-                
-            </Modal> */}
         </View >
     );
 };

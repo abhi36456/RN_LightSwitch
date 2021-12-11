@@ -21,21 +21,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         fontWeight: '600'
     },
-    subTitleTxt: { fontSize: 15, color: 'black', marginTop: hp('1%'), width: wp('80%'), alignSelf: 'center', },
-    avtarViewImg: {
-        height: wp('32%'),
-        width: wp('32%'),
-        alignSelf: 'center',
-        borderRadius: 10,
-        marginTop: hp('5%')
-    },
-    avtarCameraIcon: {
-        alignSelf: 'center',
-        bottom: hp('4%'),
-        height: hp('6%'),
-        width: hp('6%'),
-        left: wp('14%')
-    },
+
     inputText: {
         padding: 16,
         borderColor: constants.black_border,
@@ -75,36 +61,7 @@ const styles = StyleSheet.create({
         color: constants.white_Colors,
         fontFamily: Fonts.Regular,
     },
-    header: {
-        backgroundColor: constants.white_Colors,
-        ...ifIphoneX(
-            {
-                paddingTop: getStatusBarHeight() + 20
-            },
-            {
-                paddingTop: Platform.OS == "ios" ? getStatusBarHeight() + 15 : 20 // for android 
-            }
-        )
-    },
-    headerSubContainer: {
-        flexDirection: 'row',
-        width: wp("95%"),
-        alignSelf: 'center',
-    },
-    backWrapper: {
-        justifyContent: 'center',
-        borderRadius: 12,
-        borderColor: constants.grey_Background,
-        borderWidth: 1,
-        marginLeft: 16,
-        padding: 16,
-    },
-    backIcon: {
-        width: 15,
-        height: 15,
-        tintColor: constants.dark_purple,
-        alignSelf: 'center'
-    },
+
     input_row: {
         flexDirection: "row",
         justifyContent: "space-between",
@@ -142,6 +99,17 @@ const styles = StyleSheet.create({
         color: colors.white_Colors,
         textAlign: 'center',
         fontSize: actuatedNormalize(14)
+    },
+    suggestion_input: {
+        padding: 16,
+        borderColor: constants.black_border,
+        borderRadius: 7,
+        borderWidth: 1,
+        fontFamily: Fonts.Regular,
+        width: wp("80%"),
+        alignSelf: "center",
+        flexDirection: "row",
+        justifyContent: "space-between",
     }
 });
 export default styles

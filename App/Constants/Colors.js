@@ -14,7 +14,8 @@ const colors = {
   violate: '#7165FF',
   black_gray: "#656565",
   black_border: "#CDCDCD",
-  light_black: 'rgba(0, 0, 0, 0.7);'
+  light_black: 'rgba(0, 0, 0, 0.7)',
+  transparent_input: 'rgba(0, 0, 0, 0.4)'
 };
 
 export default colors;

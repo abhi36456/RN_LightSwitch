@@ -5,8 +5,9 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from '../../../
 import * as StaticArray from "../../../Constants/StaticArray"
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import Buttons from '../../../Components/Buttons';
-import { actuatedNormalize, Fonts } from '../../../utils';
 import colors from '../../../Constants/Colors';
+import styles from "./style"
+import { constant_string } from '../../../data';
 
 const SwiperScreen = ({ navigation }) => {
   const [activeSlide, setActiveSlide] = useState(0)
@@ -47,15 +48,15 @@ const SwiperScreen = ({ navigation }) => {
         }
         {user_type == 1 ?
           <Text style={styles.subTitleTxt}>
-            {activeSlide == 0 ? 'Discover a diverse, passionate community of professionals interested in discussing your opportunities' : null}
-            {activeSlide == 1 ? 'No more recruiting ping pong. Connect directly with rising talent who have already expressed interest in your positions.' : null}
-            {activeSlide == 2 ? 'Hire 5x faster with an exclusive platform designed to connect you to high-quality candidates in minutes. No more waiting.' : null}
+            {activeSlide == 0 ? constant_string.Professional_texts[0] : null}
+            {activeSlide == 1 ? constant_string.Professional_texts[1] : null}
+            {activeSlide == 2 ? constant_string.Professional_texts[2] : null}
           </Text>
           :
           <Text style={styles.subTitleTxt}>
-            {activeSlide == 0 ? 'Connect directly with leading professionals hiring for leading opportunities. Executives want to chat with you, so no more waiting to hear back.' : null}
-            {activeSlide == 1 ? 'Explore an exclusive network of professionals and job opportunities custom filtered for your profile and preferences, not another laundry list.' : null}
-            {activeSlide == 2 ? 'Refer your friends to managers to hiring managers / opportunities and grow your network through LightSwitch. Successful referrals earn you rewards.' : null}
+            {activeSlide == 0 ? constant_string.Hiring_manager_texts[0] : null}
+            {activeSlide == 1 ? constant_string.Hiring_manager_texts[1] : null}
+            {activeSlide == 2 ? constant_string.Hiring_manager_texts[2] : null}
           </Text>
         }
         <Pagination
@@ -91,57 +92,3 @@ const SwiperScreen = ({ navigation }) => {
 
 export default React.memo(SwiperScreen);
 
-const styles = StyleSheet.create({
-  swiperImg: {
-    height: hp("40%"),
-    width: wp("60%"),
-    alignSelf: 'center',
-    borderRadius: 20,
-  },
-  swiperContiner: {
-    alignSelf: "center",
-    marginTop: hp('10%')
-  },
-  titleTxt: {
-    marginTop: hp('5%'),
-    fontSize: actuatedNormalize(24),
-    color: constants.dark_purple,
-    textAlign: 'center',
-    fontFamily: Fonts.Bold
-  },
-  subTitleTxt: {
-    marginTop: hp('2%'),
-    fontSize: actuatedNormalize(15),
-    color: constants.grey_Text,
-    textAlign: 'center',
-    alignSelf: 'center',
-    width: wp('80%'),
-    fontFamily: Fonts.Regular
-  },
-  dotView: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-    backgroundColor: constants.dark_purple
-  },
-
-  alreadyAccountView: {
-    flexDirection: 'row',
-    alignSelf: 'center',
-    alignItems: 'center',
-    marginTop: hp('3%')
-  },
-  alreadyTxt: {
-    fontSize: actuatedNormalize(16),
-    color: constants.grey_Text,
-    textAlign: 'center',
-    fontFamily: Fonts.Regular
-  },
-  signInTxt: {
-    fontSize: actuatedNormalize(16),
-    color: constants.dark_purple,
-    textAlign: 'center',
-    fontFamily: Fonts.Bold
-  }
-
-})

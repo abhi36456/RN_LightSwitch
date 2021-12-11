@@ -1,53 +1,18 @@
-import React, { useState } from 'react';
-import { Text, View, FlatList, TouchableOpacity, ScrollView, Image } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome'
+import React, { lazy, useState } from 'react';
+import { Text, View, TouchableOpacity, ScrollView, Image } from 'react-native';
 import constant from "../../../../Constants/Colors"
 import * as roleInterstedArray from "../../../../Constants/StaticArray"
 import styles from './style';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "../../../../Utility/index"
-import { Input } from "react-native-elements"
-import Buttons from "../../../../Components/Buttons"
 import { Header } from '../../../../Components/commonHeader';
 import { images } from '../../../../Constants/images';
 import PickerModel from '../pickerModel';
+import { Suggestion_List } from '../../../../data';
 
-let Suggestion_List = [
-    "Software Engineer",
-    "Software developer",
-    "Sonta Luis",
-    "Sonta Devops",
-    "Developer",
-    "Project Managaer",
-]
-var data =
-    [
-        { key: 'Android' }, { key: 'iOS' }, { key: 'Java' }, { key: 'Swift' },
-        { key: 'Php' }, { key: 'Hadoop' },
-    ]
 
 const FiltterScreen = () => {
-    const [roleArray, setRoleArray] = useState(roleInterstedArray.roleInterstedArray)
-    const [selectedDegree, setSelectedDegree] = useState('')
     const [dataList, setDataList] = useState(Suggestion_List);
     const [blnSearchModal, setblnSearchModal] = useState(false);
-
-    const changeValue = (itemSelected, index) => {
-        const newData = roleArray.map(item => {
-            if (item.id == itemSelected.id) {
-                return {
-                    ...item,
-                    selected: !item.selected,
-                };
-            }
-            return {
-                ...item,
-                selected: item.selected,
-            };
-        });
-        setRoleArray(newData);
-
-    };
-
 
     return (
         <View style={{ backgroundColor: constant.white_Colors, flex: 1 }}>

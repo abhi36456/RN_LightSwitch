@@ -20,8 +20,11 @@ import { images } from '../../../Constants/images';
 import { TextInput } from 'react-native-paper';
 import * as ImagePicker from 'react-native-image-picker';
 import RBSheet from "react-native-raw-bottom-sheet";
-import { isIphoneX, getStatusBarHeight } from 'react-native-iphone-x-helper';
+import { isIphoneX } from 'react-native-iphone-x-helper';
 import Toast from 'react-native-simple-toast';
+import AuthHeader from '../../../Components/AuthHeader';
+import colors from '../../../Constants/Colors';
+import { constant_string } from '../../../data';
 
 
 const ProfileDetail = ({ navigation, title }) => {
@@ -29,18 +32,15 @@ const ProfileDetail = ({ navigation, title }) => {
     const [firstname, setFirstname] = useState('')
     const [lastname, setLastname] = useState('')
     const [url_social, setSocialUrl] = useState('')
-
     const [profileObject, setProfileObject] = useState(null);
-
-
 
     const onContinue = () => {
         if (firstname == '') {
-            Toast.show('Please enter the firstname');
+            Toast.show(constant_string.Please_enter_the_first_name);
         } else if (lastname == '') {
-            Toast.show('Please enter the lastname');
+            Toast.show(constant_string.Please_enter_the_last_name);
         } else if (url_social == '') {
-            Toast.show('Please enter the linkedin url');
+            Toast.show(constant_string.Please_enter_the_linkedin_url);
         } else {
             navigation.navigate('ProfileDetailMore')
         }
@@ -98,9 +98,6 @@ const ProfileDetail = ({ navigation, title }) => {
         )
     }
 
-
-
-
     const _renderRBSheet = () => {
         return (
             <RBSheet
@@ -150,20 +147,7 @@ const ProfileDetail = ({ navigation, title }) => {
         <View style={styles.mainView}>
             {_renderRBSheet()}
 
-            <View style={styles.header}>
-                <View style={styles.headerSubContainer}>
-
-                    <TouchableOpacity
-                        onPress={() => navigation.goBack()}
-                        style={styles.backWrapper}>
-                        <Image
-                            resizeMode={'contain'}
-                            source={images.back_pink}
-                            style={styles.backIcon}
-                        />
-                    </TouchableOpacity>
-                </View>
-            </View>
+            <AuthHeader navigation={navigation} />
 
             <ScrollView
                 bounces={false}
@@ -172,11 +156,7 @@ const ProfileDetail = ({ navigation, title }) => {
                 keyboardShouldPersistTaps={'handled'}>
 
                 <Text style={styles.titleTxt}>Tell us about you</Text>
-                <TouchableOpacity
-                    onPress={() => {
-                        refRBSheet.current?.open()
-                    }}
-                >
+                <TouchableOpacity onPress={() => { refRBSheet.current?.open() }}>
                     <Image
                         source={profileObject && profileObject != '' ? { uri: profileObject.uri ? profileObject.uri : profileObject } : images.photo}
                         style={styles.avtarViewImg}>
@@ -184,14 +164,14 @@ const ProfileDetail = ({ navigation, title }) => {
 
                     <Image source={images.camera} style={styles.avtarCameraIcon} />
                 </TouchableOpacity>
-                {/* <Icon name={'camera'} size={20} color={constants.title_Colors} style={styles.avtarCameraIcon}></Icon> */}
+
                 <TextInput
                     label="First Name"
                     style={styles.inputView}
                     mode={'outlined'}
-                    outlineColor={'rgba(0, 0, 0, 0.4)'}
-                    theme={{ colors: { primary: 'rgba(0, 0, 0, 0.4)' } }}
-                    underlineColor={'rgba(0, 0, 0, 0.4)'}
+                    outlineColor={colors.transparent_input}
+                    theme={{ colors: { primary: colors.transparent_input } }}
+                    underlineColor={colors.transparent_input}
                     value={firstname}
                     onChangeText={(val) => { setFirstname(val) }}
                 />
@@ -200,24 +180,24 @@ const ProfileDetail = ({ navigation, title }) => {
                     label="Last Name"
                     style={styles.inputView}
                     mode={'outlined'}
-                    outlineColor={'rgba(0, 0, 0, 0.4)'}
-                    theme={{ colors: { primary: 'rgba(0, 0, 0, 0.4)', } }}
-                    underlineColor={'rgba(0, 0, 0, 0.4)'}
+                    outlineColor={colors.transparent_input}
+                    theme={{ colors: { primary: colors.transparent_input } }}
+                    underlineColor={colors.transparent_input}
                     value={lastname}
                     onChangeText={(val) => { setLastname(val) }}
                 />
 
-                <View style={{ flexDirection: "row", marginTop: hp('2%'), alignSelf: "center" }}>
-                    <Text style={{ alignSelf: "center", marginTop: 8, marginRight: 8 }}>
+                <View style={styles.row_input_container}>
+                    <Text style={styles.txtContainer}>
                         www.linkedin.com/in/
                     </Text>
                     <TextInput
                         label="Linkedin URL"
                         style={[styles.inputView, { width: wp(42), marginTop: 0 }]}
                         mode={'outlined'}
-                        outlineColor={'rgba(0, 0, 0, 0.4)'}
-                        theme={{ colors: { primary: 'rgba(0, 0, 0, 0.4)', } }}
-                        underlineColor={'rgba(0, 0, 0, 0.4)'}
+                        outlineColor={colors.transparent_input}
+                        theme={{ colors: { primary: colors.transparent_input } }}
+                        underlineColor={colors.transparent_input}
                         value={url_social}
                         onChangeText={(val) => { setSocialUrl(val) }}
                     />
@@ -227,7 +207,6 @@ const ProfileDetail = ({ navigation, title }) => {
                 <View style={{ marginBottom: 20 }} />
             </ScrollView>
             {Platform.OS == 'ios' && <KeyboardAvoidingView behavior={'padding'} />}
-
         </View>
     );
 };

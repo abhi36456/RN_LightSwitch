@@ -93,13 +93,6 @@ const JobsList = ({ navigation }) => {
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ paddingBottom: '20%' }}
           data={JobData}
-          // refreshing={refresh}
-          // onRefresh={() => {
-          //   setJobData(jobsList)
-          //   setTimeout(() => {
-          //     setRefresh(false)
-          //   }, 1000);
-          // }}
           extraData={!refresh}
           renderItem={({ item }) => (
             <JobsListComponent item={item}

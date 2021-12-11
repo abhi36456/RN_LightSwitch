@@ -1,15 +1,47 @@
-import {Dimensions, StyleSheet, Platform} from 'react-native';
-const window = Dimensions.get('window');
-import constants from '../../../Constants/Colors';
+import { StyleSheet } from 'react-native';
+import colors from '../../../Constants/Colors';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from '../../../Utility/index';
+import { actuatedNormalize, Fonts } from '../../../utils';
 
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from '../../../Utility/index';
-const {strings, colors, fonts, urls, PATH} = constants;
 const styles = StyleSheet.create({
+  mainView: {
+    flex: 1,
+    backgroundColor: colors.white_Colors
+  },
+  titleTxt: {
+    fontSize: actuatedNormalize(34),
+    fontFamily: Fonts.Bold,
+    color: 'black',
+    marginTop: hp('5%'),
+    width: wp('80%'),
+    alignSelf: 'center',
+  },
 
-
+  subTitleTxt: {
+    fontSize: actuatedNormalize(15),
+    color: colors.light_black,
+    marginTop: hp('1%'),
+    width: wp('80%'),
+    alignSelf: 'center',
+  },
+  inputText: {
+    padding: 16,
+    borderColor: colors.grey_Background,
+    borderRadius: 12,
+    borderWidth: 1,
+    fontFamily: Fonts.Regular
+  },
+  inputImg: {
+    height: hp("15%"),
+    width: wp("80%"),
+    alignSelf: 'center',
+    marginTop: hp('5%')
+  },
+  viewWrapper: {
+    alignSelf: "center",
+    width: wp('80%'),
+    marginTop: hp('5%')
+  },
 });
 
 export default styles;

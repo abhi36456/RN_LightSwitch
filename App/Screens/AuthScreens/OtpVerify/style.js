@@ -1,18 +1,12 @@
-import { Dimensions, StyleSheet, Platform } from 'react-native';
-const window = Dimensions.get('window');
+import { StyleSheet, Platform } from 'react-native';
 import constants from '../../../Constants/Colors';
-import { getBottomSpace, getStatusBarHeight, ifIphoneX } from 'react-native-iphone-x-helper';
-
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from '../../../Utility/index';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from '../../../Utility/index';
 import { actuatedNormalize, Fonts } from '../../../utils';
-const { strings, colors, fonts, urls, PATH } = constants;
+
 const styles = StyleSheet.create({
   titleTxt2: {
     fontSize: actuatedNormalize(20),
-    fontFamily:Fonts.Bold,
+    fontFamily: Fonts.Bold,
     color: constants.dark_purple,
     marginTop: hp('12%'),
     width: wp('80%'),
@@ -43,9 +37,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center', width: wp('100%'), marginTop: hp('7%')
   },
   textInputView: {
-
-
-
     ...Platform.select({
       ios: {
         width: wp('18%',),
@@ -66,40 +57,20 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         color: 'white',
         fontWeight: '800'
-
       },
     }),
   },
-  header: {
-    backgroundColor: constants.white_Colors,
-    ...ifIphoneX(
-      {
-        paddingTop: getStatusBarHeight() + 20
-      },
-      {
-        paddingTop: Platform.OS == "ios" ? getStatusBarHeight() + 15 : 20 // for android 
-      }
-    )
-  },
-  headerSubContainer: {
-    flexDirection: 'row',
-    width: wp("95%"),
-    alignSelf: 'center',
-  },
-  backWrapper: {
-    justifyContent: 'center',
-    borderRadius: 12,
-    borderColor: constants.grey_Background,
+  input_border: {
+    borderColor: constants.dark_purple,
     borderWidth: 1,
-    marginLeft: 16,
-    padding: 16,
-  },
-  backIcon: {
-    width: 15,
-    height: 15,
-    tintColor: constants.dark_purple,
-    alignSelf: 'center'
-  },
+    height: hp('8.5%'),
+    width: wp('17%'),
+    borderRadius: 12,
+    marginLeft: wp('3%'),
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+
 });
 
 export default styles;

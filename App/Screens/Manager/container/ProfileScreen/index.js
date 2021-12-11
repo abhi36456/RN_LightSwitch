@@ -12,27 +12,16 @@ import * as ImagePicker from 'react-native-image-picker';
 import RBSheet from "react-native-raw-bottom-sheet";
 import { isIphoneX, getStatusBarHeight } from 'react-native-iphone-x-helper';
 import PickerModel from '../pickerModel';
+import { Suggestion_List } from '../../../../data';
 
-let Suggestion_List = [
-    "Software Engineer",
-    "Software developer",
-    "Sonta Luis",
-    "Sonta Devops",
-    "Developer",
-    "Project Managaer",
-]
 
 const ProfileScreen = (props) => {
     const [selected_type, setSelectedType] = useState(1)
     const [Name, setName] = useState('')
-    const [currentRole, setCurrentRole] = useState('')
-    const [currentCompany, setCurrentCompany] = useState('')
-
     const [profileObject, setProfileObject] = useState(null);
     const [dataList, setDataList] = useState(Suggestion_List);
     const [blnSearchModal, setblnSearchModal] = useState(false);
     const refRBSheet = useRef()
-
 
     // laucnch Gallery anb Camera 
     const openGallery = (doc_type) => {

@@ -1,12 +1,11 @@
 import React from 'react'
-import { Image, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { SafeAreaView, ScrollView, Text, View } from 'react-native'
 import { Header } from '../../../../Components/commonHeader';
-import { windowHeight, windowWidth } from '../../../../Constants';
+import { windowWidth } from '../../../../Constants';
 import { jobDetail } from '../../../../data';
-import { actuatedNormalize, colors, Fonts } from '../../../../utils';
-import fonts from '../../../../utils/fonts';
-import { CultureComponent, JobsListComponent, TagComponent } from '../../components';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp, } from '../../../../Utility/index';
+import { colors } from '../../../../utils';
+import { CultureComponent, JobsListComponent } from '../../components';
+import styles from './style';
 
 const JobDetail = (props) => {
     const { data } = props.route.params
@@ -20,15 +19,7 @@ const JobDetail = (props) => {
 
             <SafeAreaView style={styles.container}>
                 <View style={{ flex: 0.9 }}>
-                    <ScrollView
-                        style={{
-                            borderColor: "#7165FF",
-                            borderWidth: 2,
-                            width: wp(85),
-                            borderRadius: 15,
-                            alignSelf: "center"
-                        }}
-                    >
+                    <ScrollView style={styles.scroll_container}>
                         <View style={{ marginHorizontal: '5%' }}>
                             <JobsListComponent
                                 item={data}
@@ -84,48 +75,3 @@ const JobDetail = (props) => {
 }
 
 export default JobDetail;
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: colors.white,
-        justifyContent: "center"
-    },
-    row: {
-        flexDirection: 'row',
-        alignItems: 'center'
-    },
-    tags: {
-        marginVertical: 10,
-        justifyContent: 'space-between',
-        width: windowWidth * 0.8,
-        alignSelf: 'center'
-    },
-    image: {
-        height: windowHeight * 0.3,
-        width: windowWidth,
-        resizeMode: 'contain',
-        alignSelf: 'center'
-    },
-    headingText: {
-        fontSize: actuatedNormalize('20'),
-        fontFamily: fonts.Bold,
-        color: colors.violate,
-        marginVertical: '5%'
-    },
-    subHeadingText: {
-        fontSize: actuatedNormalize('18'),
-        fontFamily: fonts.Bold,
-        color: colors.black,
-        marginVertical: '5%'
-    },
-    text: {
-        fontSize: actuatedNormalize('16'),
-        fontFamily: fonts.Regular
-    },
-    blue_regular: {
-        fontSize: actuatedNormalize("16"),
-        color: "#0094FF",
-        fontFamily: Fonts.Italic,
-    },
-})

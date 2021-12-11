@@ -8,22 +8,13 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { images } from '../../../../Constants/images';
 import { TextInput } from 'react-native';
 import { Header } from '../../../../Components/commonHeader';
-import { jobDetail, jobsList } from '../../../../data';
+import { jobDetail, jobsList, Suggestion_List } from '../../../../data';
 import { CultureComponent, JobsListComponent } from '../../components';
 import { windowWidth } from '../../../../Constants';
 import * as ImagePicker from 'react-native-image-picker';
 import RBSheet from "react-native-raw-bottom-sheet";
-import { isIphoneX, getStatusBarHeight } from 'react-native-iphone-x-helper';
+import { isIphoneX } from 'react-native-iphone-x-helper';
 import PickerModel from '../pickerModel';
-
-let Suggestion_List = [
-    "Software Engineer",
-    "Software developer",
-    "Sonta Luis",
-    "Sonta Devops",
-    "Developer",
-    "Project Managaer",
-]
 
 
 const ManagerJobs = ({ navigation, props }) => {

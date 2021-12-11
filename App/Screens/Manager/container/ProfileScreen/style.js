@@ -3,12 +3,7 @@ import colors from '../../../../Constants/Colors';
 const window = Dimensions.get('window');
 import constants from '../../../../Constants/Colors';
 import { getBottomSpace, getStatusBarHeight, ifIphoneX } from 'react-native-iphone-x-helper';
-
-
-import {
-    widthPercentageToDP as wp,
-    heightPercentageToDP as hp,
-} from '../../../../Utility/index';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp, } from '../../../../Utility/index';
 import { actuatedNormalize, Fonts } from '../../../../utils';
 import fonts from '../../../../utils/fonts';
 const styles = StyleSheet.create({
